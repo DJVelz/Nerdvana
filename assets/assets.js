@@ -210,12 +210,12 @@ export const productsDummyData = [
   {
     "_id": "67a1f5ef3f34a77b6dde9150",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "PlayStation 5",
-    "description": "The PlayStation 5 takes gaming to the next level with ultra-HD graphics, a powerful 825GB SSD, and ray tracing technology for realistic visuals. Whether you're into high-action games or immersive storytelling, the PS5 delivers fast loading times, seamless gameplay, and stunning visuals. It's a must-have for any serious gamer looking for the ultimate gaming experience.",
-    "price": 599.99,
-    "offerPrice": 499.99,
+    "name": "Fake Sting Sword",
+    "description": "Don Bilbo Baggins' iconic sword with this one to one foam replica.",
+    "price": 59.99,
+    "offerPrice": 55.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/dd3l13vfoartrgbvkkh5.webp"
+      fake_sting_sword
     ],
     "category": "Accessories",
     "date": 1738667503075,
@@ -224,7 +224,7 @@ export const productsDummyData = [
   {
     "_id": "67a1f70c3f34a77b6dde9156",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Canon EOS R5",
+    "name": "Fantastic Four Epic Collection",
     "description": "The Canon EOS R5 is a game-changing mirrorless camera with a 45MP full-frame sensor, offering ultra-high resolution and the ability to shoot 8K video. Whether you're capturing professional-quality stills or cinematic video footage, this camera delivers exceptional clarity, speed, and color accuracy. With advanced autofocus and in-body stabilization, the R5 is ideal for photographers and videographers alike.",
     "price": 4199.99,
     "offerPrice": 3899.99,
