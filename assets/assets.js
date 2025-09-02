@@ -182,14 +182,14 @@ export const productsDummyData = [
   {
     "_id": "67a1f5663f34a77b6dde914c",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Samsung Galaxy S23",
-    "description": "The Samsung Galaxy S23 offers an all-encompassing mobile experience with its advanced AMOLED display, offering vibrant visuals and smooth interactions. Equipped with top-of-the-line fitness tracking features and cutting-edge technology, this phone delivers outstanding performance. With powerful hardware, a sleek design, and long battery life, the S23 is perfect for those who demand the best in mobile innovation.",
-    "price": 899.99,
-    "offerPrice": 799.99,
+    "name": "Black Hooded Cloak",
+    "description": "Perfect for role playing as your favorite characters, this cloak will add the perfect touch to any costume.",
+    "price": 14.99,
+    "offerPrice": 10.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/xjd4eprpwqs7odbera1w.webp"
+      cloak
     ],
-    "category": "Smartphone",
+    "category": "Apparel",
     "date": 1738667366224,
     "__v": 0
   },
