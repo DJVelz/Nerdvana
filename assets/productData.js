@@ -3,11 +3,11 @@ import { assets } from "./assets";
 export const products = [
   {
     id: 1,
-    name: "Apple Earphones",
-    description: "Noise-cancellation, 40-hour battery",
+    name: "Anakin Skywalker Funko!",
+    description: "Star Wars Collectible",
     rating: 4.5,
-    price: "$299.99",
-    imgSrc: assets.apple_earphone_image,
+    price: "$14.99",
+    imgSrc: assets.anakin_funko,
   },
   {
     id: 2,
