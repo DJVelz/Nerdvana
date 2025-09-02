@@ -47,7 +47,7 @@ import product_details_page_apple_earphone_image2 from "./product_details_page_a
 import product_details_page_apple_earphone_image3 from "./product_details_page_apple_earphone_image3.png";
 import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
 import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
-
+import batman_costume from "./batman_costume.png"
 export const assets = {
   logo,
   search_icon,
@@ -97,7 +97,8 @@ export const assets = {
   product_details_page_apple_earphone_image4,
   product_details_page_apple_earphone_image5,
   checkmark,
-  anakin_funko
+  anakin_funko,
+  batman_costume
 };
 
 export const BagIcon = () => {
@@ -143,21 +144,21 @@ export const productsDummyData = [
     "image": [
       anakin_funko
     ],
-    "category": "Earphone",
+    "category": "Collectible",
     "date": 1738667236865,
     "__v": 0
   },
   {
     "_id": "67a1f52e3f34a77b6dde914a",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Bose QuietComfort 45",
-    "description": "The Bose QuietComfort 45 headphones are engineered for exceptional sound quality and unparalleled noise cancellation. With a 24-hour battery life and comfortable, lightweight design, these headphones deliver premium audio for any environment. Whether on a flight, in the office, or at home, the Bose QC45 blocks out distractions, offering an immersive listening experience.",
-    "price": 429.99,
-    "offerPrice": 329.99,
+    "name": "Adult Batman Costume",
+    "description": "Become the dark knight for Halloween with this costume!",
+    "price": 44.99,
+    "offerPrice": 33.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/m16coelz8ivkk9f0nwrz.webp"
+      batman_costume
     ],
-    "category": "Headphone",
+    "category": "Apparel",
     "date": 1738667310300,
     "__v": 0
   },
