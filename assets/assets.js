@@ -48,6 +48,15 @@ import product_details_page_apple_earphone_image3 from "./product_details_page_a
 import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
 import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
 import batman_costume from "./batman_costume.png"
+import cloak from "./cloak.png"
+import disney_villainous from "./disney_villainous.png"
+import fake_sting_sword from "./fake_sting_sword.png"
+import ff_epic_collection from "./ff_epic_collection.png"
+import glow_dice from "./glow_dice.png"
+import potion_bottles from "./potion_bottles.png"
+import tauriel_maxi_overdress from "./tauriel_maxi_overdress.png"
+import tricorner_hat from "./tricorner_hat.png"
+
 export const assets = {
   logo,
   search_icon,
@@ -98,7 +107,15 @@ export const assets = {
   product_details_page_apple_earphone_image5,
   checkmark,
   anakin_funko,
-  batman_costume
+  batman_costume,
+  cloak,
+  disney_villainous,
+  fake_sting_sword,
+  ff_epic_collection,
+  glow_dice,
+  potion_bottles,
+  tauriel_maxi_overdress,
+  tricorner_hat
 };
 
 export const BagIcon = () => {
