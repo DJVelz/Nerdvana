@@ -252,14 +252,14 @@ export const productsDummyData = [
   {
     "_id": "67a1f8363f34a77b6dde915c",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Sony WF-1000XM5",
-    "description": "Sony WF-1000XM5 true wireless earbuds deliver immersive sound with Hi-Res Audio and advanced noise cancellation technology. Designed for comfort and quality, they provide a stable, snug fit for a secure listening experience. Whether you're working out or traveling, these earbuds will keep you connected with the world around you while enjoying rich, clear sound.",
-    "price": 349.99,
-    "offerPrice": 299.99,
+    "name": "2 Potion Bottles",
+    "description": "Time to heal up! These plastic potion bottles will elevate your medieval costume.",
+    "price": 29.99,
+    "offerPrice": 25.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/e3zjaupyumdkladmytke.webp"
+      potion_bottles
     ],
-    "category": "Earphone",
+    "category": "Collectibles",
     "date": 1738668086331,
     "__v": 0
   },
