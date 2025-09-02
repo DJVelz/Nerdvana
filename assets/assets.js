@@ -225,13 +225,13 @@ export const productsDummyData = [
     "_id": "67a1f70c3f34a77b6dde9156",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Fantastic Four Epic Collection",
-    "description": "The Canon EOS R5 is a game-changing mirrorless camera with a 45MP full-frame sensor, offering ultra-high resolution and the ability to shoot 8K video. Whether you're capturing professional-quality stills or cinematic video footage, this camera delivers exceptional clarity, speed, and color accuracy. With advanced autofocus and in-body stabilization, the R5 is ideal for photographers and videographers alike.",
-    "price": 4199.99,
-    "offerPrice": 3899.99,
+    "description": "In 1961, Stan Lee and Jack Kirby lit the fuse of the greatest revolution in comic book history - the Marvel Age of Comics - and it started right here, in the pages of the Fantastic Four! With the space race on, Reed Richards, Ben Grimm, Sue Storm and Johnny Storm shoot for the stars...but after their craft is bombarded by cosmic rays, they return to Earth with the startling powers of the Fantastic Four! These weren't just any super heroes, though - the Fantastic Four were a realistic, relatable, bickering and loveable family that couldn't pay their rent and didn't always love their superpowers.",
+    "price": 49.99,
+    "offerPrice": 40.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/r5h370zuujvrw461c6wy.webp"
+      ff_epic_collection
     ],
-    "category": "Camera",
+    "category": "Graphic novel",
     "date": 1738667788883,
     "__v": 0
   },
