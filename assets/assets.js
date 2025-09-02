@@ -196,14 +196,14 @@ export const productsDummyData = [
   {
     "_id": "67a1f5993f34a77b6dde914e",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Garmin Venu 2",
-    "description": "The Garmin Venu 2 smartwatch blends advanced fitness tracking with sophisticated design, offering a wealth of features such as heart rate monitoring, GPS, and sleep tracking. Built with a 24-hour battery life, this watch is ideal for fitness enthusiasts and anyone looking to enhance their daily lifestyle. With a stunning AMOLED display and customizable watch faces, the Venu 2 combines technology with style seamlessly.",
-    "price": 399.99,
-    "offerPrice": 349.99,
+    "name": "Disney Villainous",
+    "description": "Disney Villainous, winner of the 2019 TOTY “Game of the Year” award, invites players to step into the shoes of their favorite Disney villains in a strategic battle for dominance. Each villain has a unique objective and special abilities, creating a dynamic gameplay experience where players must outwit opponents while navigating unexpected twists of fate. Designed for families with kids ages 10 and up, as well as avid board gamers, Disney Villainous offers a rich, immersive experience that makes it a standout gift for Disney fans and a must-have for game night.",
+    "price": 44.99,
+    "offerPrice": 40.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/hdfi4u3fmprazpnrnaga.webp"
+      disney_villainous
     ],
-    "category": "Earphone",
+    "category": "Board Game",
     "date": 1738667417511,
     "__v": 0
   },
