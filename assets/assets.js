@@ -141,7 +141,7 @@ export const productsDummyData = [
     "price": 14.99,
     "offerPrice": 12.99,
     "image": [
-      "https://funko.com/dw/image/v2/BGTS_PRD/on/demandware.static/-/Sites-funko-master-catalog/default/dw8610f831/images/funko/31681-1.png?sw=800&sh=800",
+      "https://imgs.search.brave.com/sbjaE5tgpQqPTN45z2rP-VSF8l7fYo7vAoDGTz6onxs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bWVkaWEuYW1wbGll/bmNlLm5ldC9zL2hv/dHRvcGljLzExNTAz/NDk1X2hpPyRwcm9k/dWN0TWFpbkRlc2t0/b3AkJmZtdD1hdXRv",
       "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/j212frakb8hdrhvhajhg.webp",
       "https://raw.githubusercont ent.com/avinashdm/gs-images/main/quickcart/imwuugqxsajuwqpkegb5.webp",
       "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/k1oqaslw5tb3ebw01vvj.webp"
