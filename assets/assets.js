@@ -25,6 +25,7 @@ import header_playstation_image from "./header_playstation_image.png";
 import header_macbook_image from "./header_macbook_image.png";
 import macbook_image from "./macbook_image.png";
 import bose_headphone_image from "./bose_headphone_image.png";
+import apple_earphone_image from "./apple_earphone_image.png";
 import anakin_funko from "./anakin_funko.png";
 import samsung_s23phone_image from "./samsung_s23phone_image.png";
 import venu_watch_image from "./venu_watch_image.png";
