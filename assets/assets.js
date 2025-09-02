@@ -238,14 +238,14 @@ export const productsDummyData = [
   {
     "_id": "67a1f7c93f34a77b6dde915a",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "MacBook Pro 16",
-    "description": "The MacBook Pro 16, powered by Apple's M2 Pro chip, offers outstanding performance with 16GB RAM and a 512GB SSD. Whether you're editing high-resolution video, developing software, or multitasking with ease, this laptop can handle the toughest tasks. It features a stunning Retina display with True Tone technology, making it a top choice for professionals in creative industries or anyone who demands premium performance in a portable form.",
-    "price": 2799.99,
-    "offerPrice": 2499.99,
+    "name": "Glow-in-the-dark polyhedral dice set",
+    "description": "Don't let the dark stop you from playing your favorite RPGs or card games. No matter how dark it is you'll always be able to spot that natural 20 you just rolled.",
+    "price": 19.99,
+    "offerPrice": 10.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/rzri7kytphxalrm9rubd.webp"
+      glow_dice
     ],
-    "category": "Laptop",
+    "category": "Collectible",
     "date": 1738667977644,
     "__v": 0
   },
