@@ -134,14 +134,14 @@ export const productsDummyData = [
   {
     "_id": "67a1f4e43f34a77b6dde9144",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Apple AirPods Pro 2nd gen",
-    "description": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.",
-    "price": 499.99,
-    "offerPrice": 399.99,
+    "name": "Anakin Skywalker Funko!",
+    "description": "The Dark Side never looked as good or ominous as it does in this exclusive Pop! Dark Side Anakin. His intense stare and brandished lightsaber will intimidate even the toughest of collectors.",
+    "price": 14.99,
+    "offerPrice": 12.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/k4dafzhwhgcn5tnoylrw.webp",
+      "https://funko.com/dw/image/v2/BGTS_PRD/on/demandware.static/-/Sites-funko-master-catalog/default/dw8610f831/images/funko/31681-1.png?sw=800&sh=800",
       "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/j212frakb8hdrhvhajhg.webp",
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/imwuugqxsajuwqpkegb5.webp",
+      "https://raw.githubusercont ent.com/avinashdm/gs-images/main/quickcart/imwuugqxsajuwqpkegb5.webp",
       "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/k1oqaslw5tb3ebw01vvj.webp"
     ],
     "category": "Earphone",
