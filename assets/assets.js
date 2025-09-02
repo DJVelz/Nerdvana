@@ -266,12 +266,12 @@ export const productsDummyData = [
   {
     "_id": "67a1f85e3f34a77b6dde915e",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "Samsung Projector 4k",
-    "description": "The Samsung 4K Projector offers an immersive cinematic experience with ultra-high-definition visuals and realistic color accuracy. Equipped with a built-in speaker, it delivers rich sound quality to complement its stunning 4K resolution. Perfect for movie nights, gaming, or presentations, this projector is the ultimate choice for creating an at-home theater experience or professional setting.",
-    "price": 1699.99,
-    "offerPrice": 1499.99,
+    "name": "Tauriel Maxi Overdress",
+    "description": "TNamed for the free-spirited elven warrior from The Hobbit, our Tauriel Overdress truly is a magical piece. There’s something really fantastic and awe-inspiring about this hooded overdress, from the falling vines of leaves to her mysterious oversized hood.",
+    "price": 104.99,
+    "offerPrice": 94.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/qqdcly8a8vkyciy9g0bw.webp"
+      tauriel_maxi_overdress
     ],
     "category": "Accessories",
     "date": 1738668126660,
