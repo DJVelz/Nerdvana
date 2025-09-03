@@ -33,7 +33,6 @@ import tauriel_maxi_overdress from "./tauriel_maxi_overdress.png";
 import tricorner_hat from "./tricorner_hat.png";
 
 export const assets = {
-  logo,
   search_icon,
   user_icon,
   cart_icon,
