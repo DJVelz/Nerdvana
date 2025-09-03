@@ -273,21 +273,21 @@ export const productsDummyData = [
     "image": [
       tauriel_maxi_overdress
     ],
-    "category": "Accessories",
+    "category": "Apparel",
     "date": 1738668126660,
     "__v": 0
   },
   {
     "_id": "67a1fa4b3f34a77b6dde9166",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-    "name": "ASUS ROG Zephyrus G16",
-    "description": "The ASUS ROG Zephyrus G16 gaming laptop is powered by the Intel Core i9 processor and features an RTX 4070 GPU, delivering top-tier gaming and performance. With 16GB of RAM and a 1TB SSD, this laptop is designed for gamers who demand extreme power, speed, and storage. Equipped with a stunning 16-inch display, it's built to handle the most demanding titles and applications with ease.",
-    "price": 2199.99,
-    "offerPrice": 1999.99,
+    "name": "Tricorner Hat",
+    "description": "Aye matey! This tricorner hat is essential for any swashbuckler worth their salt!!!.",
+    "price": 29.99,
+    "offerPrice": 27.99,
     "image": [
-      "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/wig1urqgnkeyp4t2rtso.webp"
+      tricorner_hat
     ],
-    "category": "Laptop",
+    "category": "Apparel",
     "date": 1738668619198,
     "__v": 0
   }
