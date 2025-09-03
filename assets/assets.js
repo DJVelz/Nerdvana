@@ -267,7 +267,7 @@ export const productsDummyData = [
     "_id": "67a1f85e3f34a77b6dde915e",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Tauriel Maxi Overdress",
-    "description": "TNamed for the free-spirited elven warrior from The Hobbit, our Tauriel Overdress truly is a magical piece. There’s something really fantastic and awe-inspiring about this hooded overdress, from the falling vines of leaves to her mysterious oversized hood.",
+    "description": "Named for the free-spirited elven warrior from The Hobbit, our Tauriel Overdress truly is a magical piece. There’s something really fantastic and awe-inspiring about this hooded overdress, from the falling vines of leaves to her mysterious oversized hood.",
     "price": 104.99,
     "offerPrice": 94.99,
     "image": [
