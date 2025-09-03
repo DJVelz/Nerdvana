@@ -1,6 +1,6 @@
 # Nerdvana 
 
-Visit nerdvana-eight.vercel.app
+Visit https://nerdvana-eight.vercel.app
 
 First, run the development server:
 
