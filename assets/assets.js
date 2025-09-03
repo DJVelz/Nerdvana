@@ -25,7 +25,6 @@ import header_playstation_image from "./header_playstation_image.png";
 import header_macbook_image from "./header_macbook_image.png";
 import macbook_image from "./macbook_image.png";
 import bose_headphone_image from "./bose_headphone_image.png";
-import apple_earphone_image from "./apple_earphone_image.png";
 import anakin_funko from "./anakin_funko.png";
 import samsung_s23phone_image from "./samsung_s23phone_image.png";
 import venu_watch_image from "./venu_watch_image.png";
@@ -42,11 +41,6 @@ import sm_controller_image from "./sm_controller_image.png";
 import jbl_soundbox_image from "./jbl_soundbox_image.png";
 import boy_with_laptop_image from "./boy_with_laptop_image.png";
 import checkmark from "./checkmark.png";
-import product_details_page_apple_earphone_image1 from "./product_details_page_apple_earphone_image1.png";
-import product_details_page_apple_earphone_image2 from "./product_details_page_apple_earphone_image2.png";
-import product_details_page_apple_earphone_image3 from "./product_details_page_apple_earphone_image3.png";
-import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
-import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
 import batman_costume from "./batman_costume.png"
 import cloak from "./cloak.png"
 import disney_villainous from "./disney_villainous.png"
@@ -85,7 +79,6 @@ export const assets = {
   header_macbook_image,
   macbook_image,
   bose_headphone_image,
-  apple_earphone_image,
   samsung_s23phone_image,
   venu_watch_image,
   upload_area,
@@ -100,11 +93,6 @@ export const assets = {
   sm_controller_image,
   jbl_soundbox_image,
   boy_with_laptop_image,
-  product_details_page_apple_earphone_image1,
-  product_details_page_apple_earphone_image2,
-  product_details_page_apple_earphone_image3,
-  product_details_page_apple_earphone_image4,
-  product_details_page_apple_earphone_image5,
   checkmark,
   anakin_funko,
   batman_costume,
