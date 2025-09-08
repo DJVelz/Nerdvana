@@ -167,7 +167,7 @@ export const productsDummyData = [
     "image": [
       fake_sting_sword
     ],
-    "category": "Accessories",
+    "category": ["Accessories", "Medieval"],
     "date": 1738667503075,
     "__v": 0
   },
@@ -209,7 +209,7 @@ export const productsDummyData = [
     "image": [
       potion_bottles
     ],
-    "category": "Collectibles",
+    "category": ["Collectibles", "Medieval"],
     "date": 1738668086331,
     "__v": 0
   },
@@ -223,7 +223,7 @@ export const productsDummyData = [
     "image": [
       tauriel_maxi_overdress
     ],
-    "category": "Apparel",
+    "category": ["Apparel", "Medieval"],
     "date": 1738668126660,
     "__v": 0
   },
@@ -237,7 +237,7 @@ export const productsDummyData = [
     "image": [
       tricorner_hat
     ],
-    "category": "Apparel",
+    "category": ["Apparel", "Medieval"],
     "date": 1738668619198,
     "__v": 0
   }
