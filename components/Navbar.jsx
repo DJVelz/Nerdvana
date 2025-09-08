@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Navbar = () => {
 
-  const { totalCount } = useAppContext;
+  const { getCartCount } = useAppContext;
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-white bg-purple">
@@ -40,7 +40,7 @@ const Navbar = () => {
         <button className="w-4 h-4 filter invert brightness-0 relative flex items-center gap-2 hover:text-white transition">
           <Image src={assets.cart_icon} alt="cart icon" />
           <span className="absolute -top-2 -right-2 w-6 h-6 bg-purple-600 text-white text-sm font-bold rounded-full flex items-center justify-center">
-          {totalCount}
+          {getCartCount}
           </span>
         </button>
       </ul>
