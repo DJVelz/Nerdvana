@@ -1,5 +1,7 @@
 # Nerdvana 
 
+Visit https://nerdvana-eight.vercel.app
+
 First, run the development server:
 
 npm run dev
