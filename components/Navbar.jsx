@@ -4,6 +4,7 @@ import { assets} from "@/assets/assets";
 import Link from "next/link"
 import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
+import { AppContext } from "@/context/AppContext";
 
 const Navbar = () => {
 
@@ -37,9 +38,9 @@ const Navbar = () => {
         </button>
         <button className="w-4 h-4 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.cart_icon} alt="cart icon" />
-          {totalCount > 0 && (
+          {getCartCount > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-          {totalCount}
+          {getCartCount}
           </span>)}
         </button>
       </ul>
