@@ -5,9 +5,9 @@ import Link from "next/link"
 import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 
-const {totalCount} = useAppContext(getCartCount)
-
 const Navbar = () => {
+
+  const { totalCount } = useAppContext;
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-white bg-purple">
