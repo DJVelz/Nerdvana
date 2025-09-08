@@ -106,7 +106,7 @@ const Product = () => {
             </div>
             <div className="flex flex-col items-center">
                 <div className="flex flex-col items-center mb-4 mt-16">
-                    <p className="text-3xl font-medium">Featured <span className="font-medium text-purple">Products</span></p>
+                    <p className="text-3xl font-medium">Featured <span className="font-medium text-light_purple">Products</span></p>
                     <div className="w-28 h-0.5 bg-purple mt-2"></div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6 pb-14 w-full">
