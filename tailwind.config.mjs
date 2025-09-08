@@ -10,7 +10,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        purple: "#471396"
+        purple: "#471396",
+        light_purple: "#9929EA",
+        gold: "#FFCC00"
       },
       gridTemplateColumns:{
         'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
