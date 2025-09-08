@@ -125,7 +125,7 @@ export const productsDummyData = [
     "image": [
       batman_costume
     ],
-    "category": "Apparel",
+    "category": ["Apparel"],
     "date": 1738667310300,
     "__v": 0
   },
@@ -139,7 +139,7 @@ export const productsDummyData = [
     "image": [
       cloak
     ],
-    "category": "Apparel",
+    "category": ["Apparel", "Medieval"],
     "date": 1738667366224,
     "__v": 0
   },
