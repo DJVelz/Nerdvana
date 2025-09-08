@@ -32,18 +32,15 @@ const Navbar = () => {
         <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" />
         <button className="flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
-          Account
         </button>
         <button className="flex items-center gap-2 hover:text-white transition">
           <Image src={assets.cart_icon} alt="cart icon" />
-          Cart
         </button>
       </ul>
 
       <div className="flex items-center md:hidden gap-3">
         <button className="flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
-          Account
         </button>
       </div>
     </nav>
