@@ -4,7 +4,7 @@ import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
 import { Cinzel } from "next/font/google";
 
-const cinzel = Cinzel({ subsets: ["latin"], weight: ["700"] });
+const cinzel = Cinzel({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 const outfit = Outfit({ subsets: ['latin'], weight: ["300", "400", "500"] })
 
