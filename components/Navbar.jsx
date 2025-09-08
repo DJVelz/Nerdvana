@@ -8,7 +8,7 @@ import Image from "next/image";
 const Navbar = () => {
 
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700 background-purple">
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700 background-color purple">
       <Link href="/" className="hover:text-gray-900 transition">
           Nerdvana
         </Link>
