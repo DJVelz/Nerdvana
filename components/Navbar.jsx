@@ -39,6 +39,13 @@ const Navbar = () => {
           Cart
         </button>
       </ul>
+
+      <div className="flex items-center md:hidden gap-3">
+        <button className="flex items-center gap-2 hover:text-white transition">
+          <Image src={assets.user_icon} alt="user icon" />
+          Account
+        </button>
+      </div>
     </nav>
   );
 };
