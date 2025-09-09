@@ -7,7 +7,7 @@ const HomeProducts = () => {
   const { products, router } = useAppContext()
 
   return (
-    <div className="flex flex-col items-center pt-14 space-y-16 w-full">
+    <div className="flex flex-col items-center pt-14 space-y-10 w-full">
       <p className="text-2xl font-medium text-left w-full">Products under $30</p>
       <div className="flex gap-6 overflow-x-auto mt-6 pb-14 w-full">
         {products
