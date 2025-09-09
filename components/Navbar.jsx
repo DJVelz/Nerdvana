@@ -44,8 +44,14 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center md:hidden gap-3">
-        <button className="flex items-center gap-2 hover:text-white transition">
+        <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <Image src={assets.search_icon} alt="search icon" />
+        </button>
+        <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
+        </button>
+        <button onClick={() => { router.push('/cart') }} className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+          <Image src={assets.cart_icon} alt="cart icon"/>
         </button>
       </div>
     </nav>
