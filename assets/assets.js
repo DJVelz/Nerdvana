@@ -31,8 +31,8 @@ import glow_dice from "./glow_dice.png";
 import potion_bottles from "./potion_bottles.png";
 import tauriel_maxi_overdress from "./tauriel_maxi_overdress.png";
 import tricorner_hat from "./tricorner_hat.png";
-import chevron_left from "./chevron_left.svg";
-import chevron_right from "./chevron_right.svg";
+import chevron_left from "./chevron-left.svg";
+import chevron_right from "./chevron-right.svg";
 
 export const assets = {
   search_icon,
