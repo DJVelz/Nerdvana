@@ -8,32 +8,21 @@ const HomeProducts = () => {
   const { products, router } = useAppContext()
 
   return (
-    <div className="flex flex-col items-center pt-14 space-y-10 w-full">
-      <p className="text-2xl font-medium text-left w-full">Products under $30</p>
-      <div className="flex gap-6 overflow-x-auto mt-6 pb-14 w-full">
-        {products
-          .filter(product => product.price < 30.0)
-          .map((product, index) => (
-            <div className="flex-shrink-0 w-64" key={index}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-      </div>
-      <div className="w-16 h-0.5 bg-purple rounded-full"></div>
+    <div className="flex flex-col items-center pt-14 w-full">
+      <Carousel
+        title="Products under $30"
+        products={products.filter((p) => p.price < 30.0)}
+      />
 
-      <p className="text-2xl font-medium text-left w-full">Prep for the renfair</p>
-      <div className="flex gap-6 overflow-x-auto mt-6 pb-14 w-full">
-        {products
-          .filter(product => product.category.includes("Medieval"))
-          .map((product, index) => (
-            <div className="flex-shrink-0 w-64" key={index}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-      </div>
-      <div className="w-16 h-0.5 bg-purple rounded-full"></div>
+      <Carousel
+        title="Prep for the renfair"
+        products={products.filter((p) => p.category.includes("Medieval"))}
+      />
 
-      <button onClick={() => { router.push('/all-products') }} className="px-12 py-2.5 border rounded text-gray-500/70 hover:bg-slate-50/90 transition">
+      <button
+        onClick={() => router.push("/all-products")}
+        className="px-12 py-2.5 border rounded text-gray-500/70 hover:bg-slate-50/90 transition mt-8"
+      >
         Shop all products
       </button>
     </div>
