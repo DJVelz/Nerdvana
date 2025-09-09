@@ -37,7 +37,7 @@ const Navbar = () => {
         <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
         </button>
-        <button className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <button onClick={() => { router.push('/cart') }} className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.cart_icon} alt="cart icon"/>
         </button>
       </ul>
