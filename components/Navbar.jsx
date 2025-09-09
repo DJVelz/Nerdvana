@@ -33,7 +33,7 @@ const Navbar = () => {
           About Us
         </Link>
         <Link href="/" className="hover:text-white transition">
-          Contact
+          Guide Forums
         </Link>
 
       </div>
