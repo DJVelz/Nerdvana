@@ -37,18 +37,15 @@ const Navbar = () => {
       </div>
 
       <ul className="hidden md:flex items-center gap-4">
-        <button className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+        <Link href="/all-products" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
           <Image src={assets.search_icon} alt="search icon" className="w-5 h-5" />
-        </button>
-        <button className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+        </Link>
+        <Link href="/" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
           <Image src={assets.user_icon} alt="user icon" className="w-5 h-5" />
-        </button>
+        </Link>
         <Link href="/cart" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
           <Image src={assets.cart_icon} alt="cart icon" className="w-5 h-5" />
         </Link>
-        <button onClick={() => router.push('/cart')} className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
-          <Image src={assets.cart_icon} alt="cart icon" className="w-5 h-5" />
-        </button>
       </ul>
 
 
