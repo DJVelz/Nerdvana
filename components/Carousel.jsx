@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
+import { assets } from "@/assets/assets";
 
 export default function Carousel({ title, products }) {
     const carouselRef = useRef(null);
@@ -14,7 +15,7 @@ export default function Carousel({ title, products }) {
           onClick={() => carouselRef.current.scrollBy({ left: -300, behavior: "smooth" })}
           className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded shadow z-10"
         >
-          ◀
+          <Image src={assets.chevron_left} alt="left arrow" width={24} height={24} />
         </button>
 
         {/* Product Cards */}
@@ -34,7 +35,7 @@ export default function Carousel({ title, products }) {
           onClick={() => carouselRef.current.scrollBy({ left: 300, behavior: "smooth" })}
           className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded shadow z-10"
         >
-          ▶
+          <Image src={assets.chevron_right} alt="right arrow" width={24} height={24} />
         </button>
       </div>
 

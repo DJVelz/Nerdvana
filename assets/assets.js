@@ -31,6 +31,8 @@ import glow_dice from "./glow_dice.png";
 import potion_bottles from "./potion_bottles.png";
 import tauriel_maxi_overdress from "./tauriel_maxi_overdress.png";
 import tricorner_hat from "./tricorner_hat.png";
+import chevron_left from "./chevron_left.svg";
+import chevron_right from "./chevron_right.svg";
 
 export const assets = {
   search_icon,
@@ -65,7 +67,9 @@ export const assets = {
   glow_dice,
   potion_bottles,
   tauriel_maxi_overdress,
-  tricorner_hat
+  tricorner_hat,
+  chevron_left,
+  chevron_right
 };
 
 export const BagIcon = () => {
