@@ -9,7 +9,7 @@ const HomeProducts = () => {
   return (
     <div className="flex flex-col items-center pt-14">
       <p className="text-2xl font-medium text-left w-full">Products under $30</p>
-      <div className="w-16 h-0.5 bg-gold rounded-full"></div>
+      <div className="items-left w-16 h-0.5 bg-gold rounded-full"></div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 flex-col items-center gap-6 mt-6 pb-14 w-full">
         {products
         .filter(product => product.price < 30.00)
