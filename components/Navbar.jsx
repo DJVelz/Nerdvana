@@ -37,8 +37,8 @@ const Navbar = () => {
         <button className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
         </button>
-        <button className=" filter invert brightness-0 relative flex items-center gap-2 hover:text-white transition">
-          <Image src={assets.cart_icon} alt="cart icon" className="w-6 h-6" />
+        <button className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+          <Image src={assets.cart_icon} alt="cart icon"/>
         </button>
       </ul>
 
