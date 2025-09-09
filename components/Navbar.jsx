@@ -11,7 +11,7 @@ const Navbar = () => {
   const { getCartCount } = useAppContext;
 
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-5 border-b border-gray-300 text-white bg-purple">
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-4 border-b border-gray-300 text-white bg-purple">
 
       <div className="flex items-center md:hidden gap-3">
         <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
