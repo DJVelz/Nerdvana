@@ -50,15 +50,15 @@ const Navbar = () => {
 
 
       <div className="flex items-center md:hidden gap-3">
-        <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
-        <Image src={assets.search_icon} alt="search icon" />
-        </button>
-        <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
-          <Image src={assets.user_icon} alt="user icon" />
-        </button>
-        <button onClick={() => { router.push('/cart') }} className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
-          <Image src={assets.cart_icon} alt="cart icon"/>
-        </button>
+        <Link href="/all-products" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          <Image src={assets.search_icon} alt="search icon" className="w-5 h-5" />
+        </Link>
+        <Link href="/" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          <Image src={assets.user_icon} alt="user icon" className="w-5 h-5" />
+        </Link>
+        <Link href="/cart" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          <Image src={assets.cart_icon} alt="cart icon" className="w-5 h-5" />
+        </Link>
       </div>
     </nav>
   );
