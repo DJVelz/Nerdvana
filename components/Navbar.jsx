@@ -31,13 +31,13 @@ const Navbar = () => {
       </div>
 
       <ul className="hidden md:flex items-center gap-4 ">
-        <button className="w-4 h-4 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <button className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
         <Image src={assets.search_icon} alt="search icon" />
         </button>
-        <button className="w-4 h-4 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <button className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
         </button>
-        <button className="relative flex items-center gap-2 hover:text-white transition">
+        <button className=" filter invert brightness-0 relative flex items-center gap-2 hover:text-white transition">
           <Image src={assets.cart_icon} alt="cart icon" className="w-6 h-6" />
         </button>
       </ul>
