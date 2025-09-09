@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import ProductCard from "./ProductCard";
 
 export default function Carousel({ title, products }) {
     const carouselRef = useRef(null);
