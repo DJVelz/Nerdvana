@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
 import { assets } from "@/assets/assets";
+import Image from "next/image";
 
 export default function Carousel({ title, products }) {
     const carouselRef = useRef(null);
