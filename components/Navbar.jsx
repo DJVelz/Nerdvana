@@ -23,28 +23,28 @@ const Navbar = () => {
           Nerdvana
         </Link>
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
-        <Link href="/" className="hover:text-white transition">
+        <Link href="/" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           Home
         </Link>
         <Link href="/all-products" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           Shop
         </Link>
-        <Link href="/" className="hover:text-white transition">
+        <Link href="/" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           About Us
         </Link>
-        <Link href="/" className="hover:text-white transition">
+        <Link href="/" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           Guide Forums
         </Link>
       </div>
 
       <ul className="hidden md:flex items-center gap-4 ">
-        <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <button className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
         <Image src={assets.search_icon} alt="search icon" />
         </button>
-        <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <button className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.user_icon} alt="user icon" />
         </button>
-        <button onClick={() => { router.push('/cart') }} className="w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
+        <button onClick={() => { router.push('/cart') }} className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
           <Image src={assets.cart_icon} alt="cart icon"/>
         </button>
       </ul>
