@@ -37,17 +37,18 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <ul className="hidden md:flex items-center gap-4 ">
-        <button className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
-        <Image src={assets.search_icon} alt="search icon" />
+      <ul className="hidden md:flex items-center gap-4">
+        <button className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          <Image src={assets.search_icon} alt="search icon" className="w-5 h-5" />
         </button>
-        <button className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
-          <Image src={assets.user_icon} alt="user icon" />
+        <button className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          <Image src={assets.user_icon} alt="user icon" className="w-5 h-5" />
         </button>
-        <button onClick={() => { router.push('/cart') }} className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple w-6 h-6 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
-          <Image src={assets.cart_icon} alt="cart icon"/>
+        <button onClick={() => router.push('/cart')} className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          <Image src={assets.cart_icon} alt="cart icon" className="w-5 h-5" />
         </button>
       </ul>
+
 
       <div className="flex items-center md:hidden gap-3">
         <button className="w-8 h-8 filter invert brightness-0 flex items-center gap-2 hover:text-white transition">
