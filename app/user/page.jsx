@@ -13,18 +13,10 @@ export default function RegisterPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch("/api/register", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(formData),
-        });
-
-        if (res.ok) {
-            alert("Account created!");
-        } else {
-            alert("Something went wrong.");
-        }
+        console.log("Collected data:", formData);
+        alert(`Account created for ${formData.name} (${formData.email})`);
     };
+
 
     return(
         <>
