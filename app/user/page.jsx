@@ -48,7 +48,7 @@ export default function RegisterPage() {
                         className="border p-2 rounded"
                         required
                         />
-                        <button type="submit" className="bg-blue-600 text-white p-2 rounded">
+                        <button type="submit" className="bg-light_purple text-white p-2 rounded hover:bg-purple">
                             Register
                         </button>
                     </form>
