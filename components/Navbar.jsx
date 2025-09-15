@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link href="/all-products" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           Shop
         </Link>
-        <Link href="/" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
+        <Link href="/about" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           About Us
         </Link>
         <Link href="/" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
