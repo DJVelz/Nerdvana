@@ -30,6 +30,24 @@ export default function RegisterPage() {
         <Navbar/>
             <div className="flex flex-col items-center justify-center min-h-screen">
                 <h1 className="text-2x1 font-bold mb-4">Create Account</h1>"
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-64">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        onChange={handleChange}
+                        className="border p-2 rounded"
+                        required
+                        />
+                    <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                    className="border p-2 rounded"
+                    required
+                    />
+                </form>
             </div>
     )
 }
