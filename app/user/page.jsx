@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import { assets } from "@/assets/assets";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({ name: "", email: ""});
@@ -23,5 +26,10 @@ export default function RegisterPage() {
         }
     };
 
-    
+    return(
+        <Navbar/>
+            <div className="flex flex-col items-center justify-center min-h-screen">
+                <h1 className="text-2x1 font-bold mb-4">Create Account</h1>"
+            </div>
+    )
 }
