@@ -47,7 +47,7 @@ export default function About() {
                                 <Image
                                 src={assets.self_portrait}
                                 alt="Team member"
-                                className="rounded-full mx-auto mb-4"
+                                className="rounded-full mx-auto mb-3"
                                 />
                                 <h3 className="text-lg font-semibold">Dereck Velez Matias</h3>
                                 <p className="text-sm text-gray-600">Founder, Developer, Designer & Marketing</p>
