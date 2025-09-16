@@ -33,7 +33,7 @@ import tauriel_maxi_overdress from "./tauriel_maxi_overdress.png";
 import tricorner_hat from "./tricorner_hat.png";
 import chevron_left from "./chevron-left.svg";
 import chevron_right from "./chevron-right.svg";
-import lego_dnd from "./lego_dnd.png";
+import lego from "./lego.png";
 
 export const assets = {
   search_icon,
@@ -71,7 +71,7 @@ export const assets = {
   tricorner_hat,
   chevron_left,
   chevron_right,
-  lego_dnd
+  lego
 };
 
 export const BagIcon = () => {
