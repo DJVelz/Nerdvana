@@ -32,7 +32,7 @@ export default function About() {
                         </div>
                         <div className="rounded-xl overflow-hidden shadow-lg">
                             <img
-                                src="https://placehold.co/500x300"
+                                src="lego_dnd.png"
                                 alt="Nerdvana story image"
                                 className="object-cover w-full h-full"
                             />
