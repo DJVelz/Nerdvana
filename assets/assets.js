@@ -34,6 +34,7 @@ import tricorner_hat from "./tricorner_hat.png";
 import chevron_left from "./chevron-left.svg";
 import chevron_right from "./chevron-right.svg";
 import lego from "./lego.png";
+import self_portrait from "./self_portrait.png";
 
 export const assets = {
   search_icon,
@@ -71,7 +72,8 @@ export const assets = {
   tricorner_hat,
   chevron_left,
   chevron_right,
-  lego
+  lego,
+  self_portrait
 };
 
 export const BagIcon = () => {
