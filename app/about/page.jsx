@@ -42,7 +42,7 @@ export default function About() {
 
                     <section className="w-full max-w-5xl text-center">
                         <h2 className="text-2xl font-bold mb-10">Meet the Team</h2>
-                        <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-8">
+                        <div className="flex justify-center">
                             <div className="bg-white p-6 rounded-xl shadow-md">
                                 <img
                                 src="https://placehold.co/150x150"
