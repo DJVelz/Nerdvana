@@ -32,7 +32,7 @@ export default function About() {
                         </div>
                         <div className="rounded-xl overflow-hidden shadow-lg">
                             <img
-                                src="lego_dnd.png"
+                                src={assets.lego_png}
                                 alt="Nerdvana story image"
                                 className="object-cover w-full h-full"
                             />
