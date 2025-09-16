@@ -38,6 +38,21 @@ export default function About() {
                             />
                         </div>
                     </section>
+
+                    <section className="w-full max-w-5xl text-center">
+                        <h2 className="text-2xl font-bold mb-10">Meet the Team</h2>
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                            <div className="bg-white p-6 rounded-xl shadow-md">
+                                <img
+                                src="https://placehold.co/150x150"
+                                alt="Team member"
+                                className="rounded-full mx-auto mb-4"
+                                />
+                                <h3 className="text-lg font-semibold">Dereck Velez</h3>
+                                <p className="text-sm text-gray-600">Founder, Developer, Designer & Marketing</p>
+                            </div>
+                        </div>
+                    </section>
                 </main>
             <Footer/>
         </>
