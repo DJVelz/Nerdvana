@@ -19,6 +19,25 @@ export default function About() {
                             connect with their passions, and support creators.
                         </p>
                     </section>
+
+                    <section className="max-w-4xl grid md:grid-cols-2 gap-8 items-center mb-16">
+                        <div>
+                            <h2 className="text-2xl font-bold mb-3">Our Story</h2>
+                            <p className="leading-relaxed">
+                                Born out of a passion project, Nerdvana started as a simple idea:
+                                create a space where people can find unique, geeky products while
+                                supporting indie creators and fellow fans. What began as a side
+                                hustle is now growing into a community-driven platform.
+                            </p>
+                        </div>
+                        <div className="rounded-xl overflow-hidden shadow-lg">
+                            <img
+                                src="https://placehold.co/500x300"
+                                alt="Nerdvana story image"
+                                className="object-cover w-full h-full"
+                            />
+                        </div>
+                    </section>
                 </main>
             <Footer/>
         </>
