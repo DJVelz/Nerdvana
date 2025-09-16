@@ -44,8 +44,8 @@ export default function About() {
                         <h2 className="text-2xl font-bold mb-10">Meet the Team</h2>
                         <div className="flex justify-center">
                             <div className="bg-white p-6 rounded-xl shadow-md">
-                                <img
-                                src="https://placehold.co/150x150"
+                                <Image
+                                src={assets.self_portrait}
                                 alt="Team member"
                                 className="rounded-full mx-auto mb-4"
                                 />
