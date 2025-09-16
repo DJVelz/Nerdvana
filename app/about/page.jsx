@@ -49,7 +49,7 @@ export default function About() {
                                 alt="Team member"
                                 className="rounded-full mx-auto mb-4"
                                 />
-                                <h3 className="text-lg font-semibold">Dereck Velez</h3>
+                                <h3 className="text-lg font-semibold">Dereck Velez Matias</h3>
                                 <p className="text-sm text-gray-600">Founder, Developer, Designer & Marketing</p>
                             </div>
                         </div>
