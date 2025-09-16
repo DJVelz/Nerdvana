@@ -9,12 +9,16 @@ export default function About() {
         <>
             <Navbar/>
                 <main className="flex flex-col items-center justify-center min-h-screen p-6">
-                    <h1 className="text-4xl font-bold mb-4">About Nerdvana</h1>
+                    <section className="text-center max-w-3xl mb-16">
+                    <h1 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    About Nerdvana
+                    </h1>
                     <p className="max-w-xl text-center text-lg">
                         Nerdvana is an e-commerce platform built for fans of games, fantasy, and all things nerdy. 
                         Our mission is to create a space where enthusiasts can find unique products, 
                         connect with their passions, and support creators.
                     </p>
+                    </section>
                 </main>
             <Footer/>
         </>
