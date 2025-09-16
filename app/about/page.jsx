@@ -31,7 +31,7 @@ export default function About() {
                             </p>
                         </div>
                         <div className="rounded-xl overflow-hidden shadow-lg">
-                            <img
+                            <Image
                                 src={assets.lego_png}
                                 alt="Nerdvana story image"
                                 className="object-cover w-full h-full"
