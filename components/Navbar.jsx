@@ -63,6 +63,12 @@ const Navbar = () => {
           <Image src={assets.cart_icon} alt="cart icon" className="w-5 h-5" />
         </Link>
       </div>
+
+      {isMenuOpen && (
+
+        <div className="absolute top-full left-0 w-full bg-purple border-t border-gray-300 flex flex-col md:hidden z-50">
+        </div>
+      )}
     </nav>
   );
 };
