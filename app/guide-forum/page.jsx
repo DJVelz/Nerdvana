@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const Forum = () => {
     return (
@@ -12,6 +13,7 @@ const Forum = () => {
                         This is where users can share tips, guides, and discussion.
                     </p>
                 </main>
+            <Footer/>
         </>
     );
 };
