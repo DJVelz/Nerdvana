@@ -65,7 +65,7 @@ const Navbar = () => {
 
       {isMenuOpen && (
 
-        <div className="absolute top-full left-0 w-full bg-purple border-t border-gray-300 flex flex-col md:hidden z-50">
+        <div className="absolute top-full left-0 w-full bg-purple border-t border-gray-300 flex flex-col md:hidden z-50 shadow-lg transition-all">
           <Link href="/" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link href="/all-products" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>Shop</Link>
           <Link href="/about" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>About Us</Link>
