@@ -27,6 +27,35 @@ const Forum = () => {
                         Welcome to the Nerdvana Guide Forums!
                         This is where users can share tips, guides, and discussion.
                     </p>
+                    <section className="space-y-6">
+                    {posts.map((post) => (
+                        <div
+                        key={post.id}
+                        className="bg-white shadow rounded-xl p-4 space-y-3"
+                        >
+                        <h2 className="text-xl font-semibold">{post.title}</h2>
+                        <p className="text-gray-700">{post.content}</p>
+
+                        <div className="border-t pt-3 space-y-2">
+                            <h3 className="text-sm font-medium text-gray-600">Comments</h3>
+                            {post.comments.length > 0 ? (
+                            <ul className="space-y-1">
+                                {post.comments.map((comment, idx) => (
+                                <li
+                                    key={idx}
+                                    className="bg-gray-100 rounded-lg p-2 text-sm"
+                                >
+                                    {comment}
+                                </li>
+                                ))}
+                            </ul>
+                            ) : (
+                            <p className="text-sm text-gray-500">No comments yet.</p>
+                            )}
+                        </div>
+                        </div>
+                    ))}
+                    </section>
                 </main>
             <Footer/>
         </>
