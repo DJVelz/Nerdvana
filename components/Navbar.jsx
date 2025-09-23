@@ -33,7 +33,7 @@ const Navbar = () => {
         <Link href="/about" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           About Us
         </Link>
-        <Link href="/" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
+        <Link href="/guide-forum" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           Guide Forums
         </Link>
       </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
           <Link href="/" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link href="/all-products" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>Shop</Link>
           <Link href="/about" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>About Us</Link>
-          <Link href="/" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>Guide Forums</Link>
+          <Link href="/guide-forum" className="px-6 py-3 hover:bg-light_purple" onClick={() => setIsMenuOpen(false)}>Guide Forums</Link>
         </div>
       )}
     </nav>
