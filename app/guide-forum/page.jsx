@@ -11,9 +11,9 @@ const posts = [
   },
   {
     id: 2,
-    title: "Favorite Programming Language?",
-    content: "Share what languages you enjoy coding in the most!",
-    comments: ["JavaScript all the way 🚀", "Python is the best for me."],
+    title: "How to put together Lord of the Rings cosplay?",
+    content: "I love lotr but figuring out what to get is overwhelming. All help is appreciated!",
+    comments: ["Check out the cloaks here in Nerdvana", "We sell a really cool Fake Sting Sword, that is a must-have!"],
   },
 ];
 
