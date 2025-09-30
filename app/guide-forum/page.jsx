@@ -12,8 +12,8 @@ const posts = [
   {
     id: 2,
     title: "How to put together Lord of the Rings cosplay?",
-    content: "I love lotr but figuring out what to get is overwhelming. All help is appreciated!",
-    comments: ["Check out the cloaks here in Nerdvana", "We sell a really cool Fake Sting Sword, that is a must-have!"],
+    content: "I love lotr but figuring out what to get is overwhelming. Any help is appreciated!",
+    comments: ["Check out the cloaks here in Nerdvana. That opens up all sorts of options for LOTR cosplays.", "We sell a really cool Fake Sting Sword, that is a must-have!"],
   },
 ];
 
