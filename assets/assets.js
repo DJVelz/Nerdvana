@@ -184,8 +184,8 @@ export const productsDummyData = [
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Fantastic Four Epic Collection",
     "description": "In 1961, Stan Lee and Jack Kirby lit the fuse of the greatest revolution in comic book history - the Marvel Age of Comics - and it started right here, in the pages of the Fantastic Four! With the space race on, Reed Richards, Ben Grimm, Sue Storm and Johnny Storm shoot for the stars...but after their craft is bombarded by cosmic rays, they return to Earth with the startling powers of the Fantastic Four! These weren't just any super heroes, though - the Fantastic Four were a realistic, relatable, bickering and loveable family that couldn't pay their rent and didn't always love their superpowers.",
-    "price": 49.99,
-    "offerPrice": 40.99,
+    "price": 39.99,
+    "offerPrice": 24.99,
     "image": [
       ff_epic_collection
     ],
