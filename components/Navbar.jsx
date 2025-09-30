@@ -20,7 +20,7 @@ const Navbar = () => {
         </button>
       </div>
 
-      <Link href="/" className="text-3xl font-bold hover:text-white transition">
+      <Link href="/" className="text-2xl font-bold hover:text-white transition">
           Nerdvana
         </Link>
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
