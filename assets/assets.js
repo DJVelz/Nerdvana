@@ -147,7 +147,7 @@ export const productsDummyData = [
     "image": [
       cloak
     ],
-    "category": ["Apparel", "Medieval"],
+    "category": ["Apparel", "fantasy"],
     "date": 1738667366224,
     "__v": 0
   },
@@ -175,7 +175,7 @@ export const productsDummyData = [
     "image": [
       fake_sting_sword
     ],
-    "category": ["Accessories", "Medieval"],
+    "category": ["Accessories", "fantasy"],
     "date": 1738667503075,
     "__v": 0
   },
@@ -203,7 +203,7 @@ export const productsDummyData = [
     "image": [
       glow_dice
     ],
-    "category": ["Collectible", "dnd"],
+    "category": ["Collectible", "fantasy"],
     "date": 1738667977644,
     "__v": 0
   },
@@ -217,7 +217,7 @@ export const productsDummyData = [
     "image": [
       potion_bottles
     ],
-    "category": ["Collectibles", "Medieval"],
+    "category": ["Collectibles", "fantasy"],
     "date": 1738668086331,
     "__v": 0
   },
@@ -231,7 +231,7 @@ export const productsDummyData = [
     "image": [
       tauriel_maxi_overdress
     ],
-    "category": ["Apparel", "Medieval"],
+    "category": ["Apparel", "fantasy"],
     "date": 1738668126660,
     "__v": 0
   },
@@ -245,7 +245,7 @@ export const productsDummyData = [
     "image": [
       tricorner_hat
     ],
-    "category": ["Apparel", "Medieval"],
+    "category": ["Apparel", "fantasy"],
     "date": 1738668619198,
     "__v": 0
   }
