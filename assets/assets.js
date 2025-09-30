@@ -213,7 +213,7 @@ export const productsDummyData = [
     "name": "2 Potion Bottles",
     "description": "Time to heal up! These plastic potion bottles will elevate your medieval costume.",
     "price": 29.99,
-    "offerPrice": 25.99,
+    "offerPrice": 19.99,
     "image": [
       potion_bottles
     ],
