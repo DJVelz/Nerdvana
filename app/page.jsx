@@ -3,11 +3,13 @@ import React from "react";
 import HomeProducts from "@/components/HomeProducts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
 
 const Home = () => {
   return (
     <>
       <Navbar/>
+      <Hero/>
       <div className="px-6 md:px-16 lg:px-32">
         <HomeProducts />
       </div>
