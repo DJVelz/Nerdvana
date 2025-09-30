@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
             <div className="flex items-end justify-between w-full mt-1">
                 <p className="text-base font-medium">{currency}{product.offerPrice}</p>
                 <span className="text-base font-normal text-gray-800/60 line-through ml-2">
-                    ${productData.price}
+                    ${product.price}
                 </span>
             </div>
         </div>
