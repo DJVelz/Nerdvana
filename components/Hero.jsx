@@ -8,6 +8,12 @@ const Hero = () => {
                 <h1 className="text-6x1 md:text-6x1 font-extrabold mb-6">
                     Welcome to <span className="text-gold">Nerdvana</span>
                 </h1>
+
+                {/* Subheadline */}
+                <p className="text-lg md:text-x1 mb-8 text-gray-200">
+                    The ultimate community for gamers, geeks, and pop culture fans. 
+                    Dive into forums, guides, and discussions with fellow nerds.
+                </p>
             </div>
         </section>
     );
