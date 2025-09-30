@@ -6,7 +6,7 @@ const Hero = () => {
             <div className="max-w-4x1 mx-auto text-center">
                 {/* Headline */}
                 <h1 className="text-4x1 md:text-6x1 font-extrabold mb-6">
-                    Welcome to <span className="text-purple">Nerdvana</span>
+                    Welcome to <span className="text-gold">Nerdvana</span>
                 </h1>
             </div>
         </section>
