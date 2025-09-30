@@ -203,7 +203,7 @@ export const productsDummyData = [
     "image": [
       glow_dice
     ],
-    "category": "Collectible",
+    "category": ["Collectible", "dnd"],
     "date": 1738667977644,
     "__v": 0
   },
