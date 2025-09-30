@@ -16,8 +16,8 @@ const HomeProducts = () => {
       />
 
       <Carousel
-        title="Prep for the renfair"
-        products={products.filter((p) => p.category.includes("Medieval"))}
+        title="Prep for your next DnD session"
+        products={products.filter((p) => p.category.includes("Medieval, dnd"))}
       />
 
       <button
