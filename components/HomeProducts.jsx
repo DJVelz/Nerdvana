@@ -11,7 +11,7 @@ const HomeProducts = () => {
       <div className="w-full max-w-7xl px-4">
         <Carousel
         title="Products under $25"
-        products={products.filter((p) => p.price < 25.0 || p.offerPrice < 30.0)}
+        products={products.filter((p) => p.price < 25.0 || p.offerPrice < 25.0)}
       />
 
       <Carousel
