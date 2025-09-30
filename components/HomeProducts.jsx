@@ -12,7 +12,7 @@ const HomeProducts = () => {
     <div className="flex flex-col items-center pt-14 w-full">
       <Carousel
         title="Products under $30"
-        products={products.filter((p) => p.price < 30.0)}
+        products={products.filter((p) => p.offerPrice < 30.0)}
       />
 
       <Carousel
