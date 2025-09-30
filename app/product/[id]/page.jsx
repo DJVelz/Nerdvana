@@ -86,7 +86,7 @@ const Product = () => {
                     </p>
                     <p className="text-3xl font-medium mt-6">
                         ${productData.offerPrice}
-                        <span className="text-base font-normal text-red-800/60 line-through ml-2">
+                        <span className="text-base font-normal text-gray-800/60 line-through ml-2">
                             ${productData.price}
                         </span>
                     </p>
