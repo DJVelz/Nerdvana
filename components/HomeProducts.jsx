@@ -7,8 +7,9 @@ const HomeProducts = () => {
   const { products, router } = useAppContext()
 
   return (
-    <div className="flex flex-col items-center pt-14 max-w-screen-lg">
-      <Carousel
+    <div className="flex flex-col items-center pt-14 w-full">
+      <div className="w-full max-w-6xl px-4">
+        <Carousel
         title="Products under $30"
         products={products.filter((p) => p.offerPrice < 30.0)}
       />
@@ -24,6 +25,7 @@ const HomeProducts = () => {
       >
         Shop all products
       </button>
+      </div>
     </div>
   );
 };
