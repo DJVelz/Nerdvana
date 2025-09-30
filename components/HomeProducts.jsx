@@ -1,7 +1,5 @@
 import React from "react";
-import ProductCard from "./ProductCard";
 import { useAppContext } from "@/context/AppContext";
-import { useRef } from "react";
 import Carousel from "./Carousel";
 
 const HomeProducts = () => {
