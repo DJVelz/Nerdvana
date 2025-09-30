@@ -10,8 +10,8 @@ const HomeProducts = () => {
     <div className="flex flex-col items-center pt-14 w-full">
       <div className="w-full max-w-7xl px-4">
         <Carousel
-        title="Products under $30"
-        products={products.filter((p) => p.offerPrice < 30.0)}
+        title="Products under $25"
+        products={products.filter((p) => p.price < 25.0 || p.offerPrice < 30.0)}
       />
 
       <Carousel
