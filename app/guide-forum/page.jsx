@@ -27,7 +27,7 @@ const Forum = () => {
                         Welcome to the Nerdvana Guide Forums!
                         This is where users can share tips, guides, and discussion.
                     </p>
-                    <section className="space-y-6">
+                    <section className="space-y-10">
                     {posts.map((post) => (
                         <div
                         key={post.id}
