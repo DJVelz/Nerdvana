@@ -36,6 +36,9 @@ const Navbar = () => {
         <Link href="/guide-forum" className="px-3 py-2 rounded-md transition-colors duration-200 hover:bg-light_purple hover:text-white transition">
           Guide Forums
         </Link>
+        <Link href="/wishlist" className="p-2 rounded-md transition-colors duration-200 hover:bg-light_purple flex items-center justify-center hover:text-white">
+          Wishlist
+        </Link>
       </div>
 
       <ul className="hidden md:flex items-center gap-4">
