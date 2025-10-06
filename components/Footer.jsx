@@ -16,12 +16,6 @@ const Footer = () => {
               <li>
                 <a className="hover:underline transition" href="#">About us</a>
               </li>
-              <li>
-                <a className="hover:underline transition" href="#">Contact us</a>
-              </li>
-              <li>
-                <a className="hover:underline transition" href="#">Privacy policy</a>
-              </li>
             </ul>
           </div>
         </div>
