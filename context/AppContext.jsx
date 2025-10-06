@@ -73,6 +73,52 @@ export const AppContextProvider = (props) => {
         return Math.floor(totalAmount * 100) / 100;
     }
 
+    const addToWishlist = async (itemId) => {
+
+        let cartData = structuredClone(cartItems);
+        if (cartData[itemId]) {
+            cartData[itemId] += 1;
+        }
+        else {
+            cartData[itemId] = 1;
+        }
+        setCartItems(cartData);
+
+    }
+
+    const updateWishlistQuantity = async (itemId, quantity) => {
+
+        let cartData = structuredClone(cartItems);
+        if (quantity === 0) {
+            delete cartData[itemId];
+        } else {
+            cartData[itemId] = quantity;
+        }
+        setCartItems(cartData)
+
+    }
+
+    const getWishlistCount = () => {
+        let totalCount = 0;
+        for (const items in cartItems) {
+            if (cartItems[items] > 0) {
+                totalCount += cartItems[items];
+            }
+        }
+        return totalCount;
+    }
+
+    const getWishlistAmount = () => {
+        let totalAmount = 0;
+        for (const items in cartItems) {
+            let itemInfo = products.find((product) => product._id === items);
+            if (cartItems[items] > 0) {
+                totalAmount += itemInfo.offerPrice * cartItems[items];
+            }
+        }
+        return Math.floor(totalAmount * 100) / 100;
+    }
+
     useEffect(() => {
         fetchProductData()
     }, [])
