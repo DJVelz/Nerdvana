@@ -111,7 +111,6 @@ const Wishlist = () => {
             Continue Shopping
           </button>
         </div>
-        <OrderSummary />
       </div>
     </>
   );
