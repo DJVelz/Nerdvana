@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = ({ title, highlight, subtitle, gradient = "from-light_purple via-blueviolet to-purple"}) => {
     return (
-        <section className="relative bg-gradient-to-r ${gradient} text-white py-20 px-6 md:px-16 lg:px:32">
+        <section className={"relative bg-gradient-to-r ${gradient} text-white py-20 px-6 md:px-16 lg:px:32"}>
             <div className="max-w-4x1 mx-auto text-center">
                 {/* Headline */}
                 <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
