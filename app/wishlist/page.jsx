@@ -18,14 +18,11 @@ const Wishlist = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
-        <p className="text-2xl md:text-3xl text-gray-500">
-          Your <span className="font-medium text-light_purple">Wishlist</span>
-        </p>
-      </div>
-      <div className="flex justify-center w-full px-4">
-        <div className="flex flex-col gap-6 w-full max-w-5xl">
-          {wishlistProducts.map((product) => (
+      <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto px-4 py-10">
+        <h1 className="text-3xl font-bold mb-6">Your Wishlist</h1>
+
+        {wishlistProducts.length > 0 ? (
+          wishlistProducts.map((product) => (
             <div
               key={product._id}
               className="flex items-center justify-between border-b pb-4"
@@ -48,21 +45,26 @@ const Wishlist = () => {
               {/* Action Buttons */}
               <div className="flex gap-2">
                 <button
-                  onClick={() => addToCart(productData._id)}
+                  onClick={() => addToCart(product._id)}
                   className="px-4 py-1 border rounded hover:bg-gray-100"
                 >
                   Add to Cart
                 </button>
-                <button 
-                  onClick={() => { addToCart(productData._id); router.push('/cart') }} 
+                <button
+                  onClick={() => {
+                    addToCart(product._id);
+                    window.location.href = '/cart'; // or use router if available
+                  }}
                   className="px-4 py-1 bg-gold text-white rounded hover:opacity-90"
                 >
                   Buy Now
                 </button>
               </div>
             </div>
-            ))}
-        </div>
+          ))
+        ) : (
+          <p className="text-gray-500">Your wishlist is empty.</p>
+        )}
       </div>
       <Footer/>
     </>
