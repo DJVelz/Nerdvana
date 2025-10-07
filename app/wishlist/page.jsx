@@ -18,7 +18,7 @@ const Wishlist = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto px-4 py-10">
+      <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold mb-6">Your Wishlist</h1>
 
         {wishlistProducts.length > 0 ? (
