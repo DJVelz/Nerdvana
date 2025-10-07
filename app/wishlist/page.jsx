@@ -19,7 +19,7 @@ const Wishlist = () => {
     <>
       <Navbar />
       <div className="flex justify-center w-full px-4">
-        <div className="flex flex-col gap-6 w-full max-w-4xl">
+        <div className="flex flex-col gap-6 w-full max-w-6xl">
           {wishlistProducts.map((product) => (
             <div
               key={product._id}
