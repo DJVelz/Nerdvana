@@ -1,13 +1,9 @@
 'use client'
 import React from "react";
-import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ProductCard from "@/components/ProductCard";
 import { useAppContext } from "@/context/AppContext";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const Wishlist = () => {
   const {
