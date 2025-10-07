@@ -18,12 +18,12 @@ const Wishlist = () => {
   return (
     <>
       <Navbar />
+      <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
+        <p className="text-2xl md:text-3xl text-gray-500">
+          Your <span className="font-medium text-light_purple">Wishlist</span>
+        </p>
+      </div>
       <div className="flex justify-center w-full px-4">
-        <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
-            <p className="text-2xl md:text-3xl text-gray-500">
-              Your <span className="font-medium text-light_purple">Wishlist</span>
-            </p>
-          </div>
         <div className="flex flex-col gap-6 w-full max-w-5xl">
           {wishlistProducts.map((product) => (
             <div
