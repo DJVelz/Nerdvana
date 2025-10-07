@@ -3,6 +3,7 @@ import React from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { useAppContext } from "@/context/AppContext";
 
@@ -30,6 +31,7 @@ const Wishlist = () => {
           <p className="text-gray-500">Your wishlist is empty.</p>
         )}
       </div>
+      <Footer/>
     </>
   );
 };
