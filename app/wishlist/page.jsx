@@ -6,11 +6,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { useAppContext } from "@/context/AppContext";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Wishlist = () => {
   const {
     products, 
     router, 
+    addToCart,
     getWishlistProducts
   } = useAppContext();
 
