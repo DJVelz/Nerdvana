@@ -20,7 +20,16 @@ const ProductCard = ({ product }) => {
                     width={800}
                     height={800}
                 />
-                <button onClick={() => { addToWishlist(product._id)}} className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
+                <button 
+                onClick={(e) => {
+                    e.stopPropagation(); // prevent navigating to product page
+                    isInWishlist(product._id)
+                        ? removeFromWishlist(product._id)
+                        : addToWishlist(product._id);
+                    }}
+                    className={`absolute top-2 right-2 bg-white p-2 rounded-full shadow-md transition 
+                        ${isInWishlist(product._id) ? "bg-black" : "bg-white"}`}
+                >
                     <Image
                         className="h-3 w-3"
                         src={assets.heart_icon}
