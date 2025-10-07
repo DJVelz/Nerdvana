@@ -81,26 +81,14 @@ export const AppContextProvider = (props) => {
         setWishlistItems(wishlistData);
     }
 
-    const updateWishlistQuantity = async (itemId, quantity) => {
-
-        let cartData = structuredClone(cartItems);
-        if (quantity === 0) {
-            delete cartData[itemId];
-        } else {
-            cartData[itemId] = quantity;
-        }
-        setCartItems(cartData)
-
+    const removeFromWishlist = (itemId) => {
+        let wishlistData = structuredClone(wishlistItems);
+        delete wishlistData[itemId];
+        setWishlistItems(wishlistData);
     }
 
-    const getWishlistCount = () => {
-        let totalCount = 0;
-        for (const items in cartItems) {
-            if (cartItems[items] > 0) {
-                totalCount += cartItems[items];
-            }
-        }
-        return totalCount;
+    const isInWishlist = (itemId) => {
+        return !!wishlistItems[itemId];
     }
 
     const getWishlistAmount = () => {
