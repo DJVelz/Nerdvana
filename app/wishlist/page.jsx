@@ -48,7 +48,10 @@ const Wishlist = () => {
                 >
                   Add to Cart
                 </button>
-                <button className="px-4 py-1 bg-gold text-white rounded hover:opacity-90">
+                <button 
+                  onClick={() => { addToCart(productData._id); router.push('/cart') }} 
+                  className="px-4 py-1 bg-gold text-white rounded hover:opacity-90"
+                >
                   Buy Now
                 </button>
               </div>
