@@ -21,12 +21,13 @@ const Forum = () => {
     return (
         <>
             <Navbar/>
+                <Hero 
+                    title="Explore the"
+                    highlight="Guide Forums"
+                    subtitle="Welcome to the Nerdvana Guide Forums!
+                        This is where users can share tips, guides, and discussion."
+                />
                 <main className="px-6 md:px-16 lg:px-32 py-8">
-                    <h1 className="text-3x1 font-bold mb-6">Guide Forums</h1>
-                    <p className="text-lg text-gray-700">
-                        Welcome to the Nerdvana Guide Forums!
-                        This is where users can share tips, guides, and discussion.
-                    </p>
                     <section className="space-y-10">
                     {posts.map((post) => (
                         <div
