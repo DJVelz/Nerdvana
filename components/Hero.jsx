@@ -6,13 +6,12 @@ const Hero = ({ title, highlight, subtitle, gradient = "from-light_purple via-bl
             <div className="max-w-4x1 mx-auto text-center">
                 {/* Headline */}
                 <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
-                    Welcome to <span className="text-gold">Nerdvana</span>
+                    {title} <span className="text-gold">{highlight}</span>
                 </h1>
 
                 {/* Subheadline */}
                 <p className="text-lg md:text-xl mb-8 text-gray-200">
-                    The ultimate community for gamers, geeks, and pop culture fans. 
-                    Dive into forums, guides, and discussions with fellow nerds.
+                    {subtitle}
                 </p>
             </div>
         </section>
