@@ -9,8 +9,9 @@ import { useAppContext } from "@/context/AppContext";
 
 const Wishlist = () => {
   const {
-    products,
-    getWishlistProducts,
+    products, 
+    router, 
+    getWishlistProducts
   } = useAppContext();
 
   const wishlistProducts = getWishlistProducts(products); 
