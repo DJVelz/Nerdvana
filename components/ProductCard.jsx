@@ -27,12 +27,11 @@ const ProductCard = ({ product }) => {
                         ? removeFromWishlist(product._id)
                         : addToWishlist(product._id);
                     }}
-                    className={`absolute top-2 right-2 bg-white p-2 rounded-full shadow-md transition 
-                        ${isInWishlist(product._id) ? "bg-black" : "bg-white"}`}
+                    className={`absolute top-2 right-2 bg-white p-2 rounded-full shadow-md transition`}
                 >
                     <Image
-                        className="h-3 w-3"
-                        src={assets.heart_icon}
+                        className="h-3 w-3 transition"
+                        src={isInWishlist(product._id) ? assets.heart_filled_icon : assets.heart_icon}
                         alt="heart_icon"
                     />
                 </button>
