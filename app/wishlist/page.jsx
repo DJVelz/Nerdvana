@@ -43,7 +43,7 @@ const Wishlist = () => {
               {/* Action Buttons */}
               <div className="flex gap-2">
                 <button
-                  onClick={() => addToCart(product._id)}
+                  onClick={() => addToCart(productData._id)}
                   className="px-4 py-1 border rounded hover:bg-gray-100"
                 >
                   Add to Cart
