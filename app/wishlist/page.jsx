@@ -23,7 +23,6 @@ const Wishlist = () => {
             <p className="text-2xl md:text-3xl text-gray-500">
               Your <span className="font-medium text-light_purple">Wishlist</span>
             </p>
-            <p className="text-lg md:text-xl text-gray-500/80">{getWishlistProducts()} Items</p>
           </div>
         <div className="flex flex-col gap-6 w-full max-w-5xl">
           {wishlistProducts.map((product) => (
