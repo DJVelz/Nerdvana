@@ -18,19 +18,42 @@ const Wishlist = () => {
   return (
     <>
       <Navbar />
-      <div className="px-6 md:px-16 lg:px-32 py-10">
-        <h1 className="text-3xl font-bold mb-6">Your Wishlist</h1>
+        <div className="flex flex-col gap-6">
+          {wishlistProducts.map((product) => (
+            <div
+              key={product._id}
+              className="flex items-center justify-between border-b pb-4"
+            >
+              {/* Product Info */}
+              <div className="flex items-center gap-4">
+                <Image
+                  src={product.image[0]}
+                  alt={product.name}
+                  width={80}
+                  height={80}
+                  className="rounded-md"
+                />
+                <div>
+                  <h2 className="text-lg font-semibold">{product.name}</h2>
+                  <p className="text-gray-600">${product.offerPrice}</p>
+                </div>
+              </div>
 
-        {wishlistProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {wishlistProducts.map((product) => (
-              <ProductCard key={product._id} product={product} />
+              {/* Action Buttons */}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => addToCart(product._id)}
+                  className="px-4 py-1 border rounded hover:bg-gray-100"
+                >
+                  Add to Cart
+                </button>
+                <button className="px-4 py-1 bg-gold text-white rounded hover:opacity-90">
+                  Buy Now
+                </button>
+              </div>
+            </div>
             ))}
-          </div>
-        ) : (
-          <p className="text-gray-500">Your wishlist is empty.</p>
-        )}
-      </div>
+        </div>
       <Footer/>
     </>
   );
