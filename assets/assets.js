@@ -15,6 +15,7 @@ import decrease_arrow from "./decrease_arrow.svg";
 import arrow_right_icon_colored from "./arrow_right_icon_colored.svg";
 import my_location_image from "./my_location_image.svg";
 import arrow_icon_white from "./arrow_icon_white.svg";
+import heart_filled_icon from "./heart_filled_icon.png";
 import heart_icon from "./heart_icon.svg";
 import star_icon from "./star_icon.svg";
 import redirect_icon from "./redirect_icon.svg";
@@ -54,6 +55,7 @@ export const assets = {
   arrow_right_icon_colored,
   my_location_image,
   arrow_icon_white,
+  heart_filled_icon,
   heart_icon,
   star_icon,
   redirect_icon,
