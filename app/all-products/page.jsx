@@ -13,7 +13,7 @@ const AllProducts = () => {
         <>
             <Navbar />
             <Hero 
-                tile={"Looking for more?"}
+                title={"Looking for more?"}
                 subtitle={"Shop from our large selection of items! From collectibles, board games, and apparel items."}
             />
             <div className="flex flex-col items-start px-6 md:px-16 lg:px-32">
