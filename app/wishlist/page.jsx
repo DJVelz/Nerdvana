@@ -4,15 +4,16 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useAppContext } from "@/context/AppContext";
+import { useRouter } from "next/router";
 
 const Wishlist = () => {
   const {
-    products, 
-    router, 
+    products,
     addToCart,
     getWishlistProducts
   } = useAppContext();
 
+  const router = useRouter();
   const wishlistProducts = getWishlistProducts(products); 
 
   return (
@@ -25,9 +26,9 @@ const Wishlist = () => {
           wishlistProducts.map((product) => (
             <div
               key={product._id}
-              className="flex items-center justify-between border-b pb-4"
+              onClick={() => router.push(`/product/${product._id}`)}
+              className="flex items-center justify-between border-b pb-4 cursor-pointer hover:bg-gray-50 transition"
             >
-              {/* Product Info */}
               <div className="flex items-center gap-4">
                 <Image
                   src={product.image[0]}
@@ -41,32 +42,13 @@ const Wishlist = () => {
                   <p className="text-gray-600">${product.offerPrice}</p>
                 </div>
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-2">
-                <button
-                  onClick={() => addToCart(product._id)}
-                  className="px-4 py-1 border rounded hover:bg-gray-100"
-                >
-                  Add to Cart
-                </button>
-                <button
-                  onClick={() => {
-                    addToCart(product._id);
-                    window.location.href = '/cart'; // or use router if available
-                  }}
-                  className="px-4 py-1 bg-gold text-white rounded hover:opacity-90"
-                >
-                  Buy Now
-                </button>
-              </div>
             </div>
           ))
         ) : (
           <p className="text-gray-500">Your wishlist is empty.</p>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
