@@ -18,6 +18,7 @@ export const AppContextProvider = (props) => {
     const [userData, setUserData] = useState(false)
     const [isSeller, setIsSeller] = useState(true)
     const [cartItems, setCartItems] = useState({})
+    const [wishlistItems, setWishlistItems] = useState({});
 
     const fetchProductData = async () => {
         setProducts(productsDummyData)
@@ -73,17 +74,11 @@ export const AppContextProvider = (props) => {
         return Math.floor(totalAmount * 100) / 100;
     }
 
-    const addToWishlist = async (itemId) => {
+    const addToWishlist = (itemId) => {
 
-        let cartData = structuredClone(cartItems);
-        if (cartData[itemId]) {
-            cartData[itemId] += 1;
-        }
-        else {
-            cartData[itemId] = 1;
-        }
-        setCartItems(cartData);
-
+        let wishlistData = structuredClone(wishlistItems);
+        wishlistData[itemId] = true
+        setWishlistItems(wishlistData);
     }
 
     const updateWishlistQuantity = async (itemId, quantity) => {
