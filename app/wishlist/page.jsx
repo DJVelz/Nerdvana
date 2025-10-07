@@ -18,7 +18,8 @@ const Wishlist = () => {
   return (
     <>
       <Navbar />
-        <div className="flex flex-col gap-6 w-full max-w-7xl px-4">
+      <div className="flex justify-center w-full px-4">
+        <div className="flex flex-col gap-6 w-full max-w-4xl">
           {wishlistProducts.map((product) => (
             <div
               key={product._id}
@@ -54,6 +55,7 @@ const Wishlist = () => {
             </div>
             ))}
         </div>
+      </div>
       <Footer/>
     </>
   );
