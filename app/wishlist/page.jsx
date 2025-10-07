@@ -9,11 +9,10 @@ import { useRouter } from "next/router";
 const Wishlist = () => {
   const {
     products,
-    addToCart,
+    router,
     getWishlistProducts
   } = useAppContext();
 
-  const router = useRouter();
   const wishlistProducts = getWishlistProducts(products); 
 
   return (
