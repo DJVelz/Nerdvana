@@ -34,7 +34,7 @@ export const AppContextProvider = (props) => {
     const fetchProducts = async () => {
         const { data, error } = await supabase.from('products').select('*');
         if (error) console.error('Error fetching products:', error);
-        return data;
+        else setProducts(data);
     };
 
     const fetchUserData = async () => {
@@ -115,6 +115,10 @@ export const AppContextProvider = (props) => {
     useEffect(() => {
         fetchUserData()
     }, [])
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
 
     const value = {
         currency, router,
