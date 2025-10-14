@@ -108,6 +108,20 @@ export const AppContextProvider = (props) => {
     return products.filter((product) => wishlistItems[product._id]);
     };
 
+    const fetchWishlist = async (userId) => {
+        const {data, error } = await supabase
+            .from('wishlist')
+            .select(`
+                id,
+                product_id,
+                products(*)
+                `)
+                .eq('user_id', userId);
+
+            if (error) console.error(error);
+            return data;
+    };
+
     useEffect(() => {
         fetchProductData()
     }, [])
