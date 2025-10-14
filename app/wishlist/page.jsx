@@ -38,23 +38,25 @@ const Wishlist = () => {
   useEffect(() => {
     fetchWishlistProducts();
   }, []);
-  
+
   return (
     <>
       <Navbar />
       <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold mb-6">Your Wishlist</h1>
 
-        {wishlistProducts.length > 0 ? (
+        {loading ? (
+          <p className="text-gray-500">Loading...</p>
+        ) : wishlistProducts.length > 0 ? (
           wishlistProducts.map((product) => (
             <div
-              key={product._id}
-              onClick={() => router.push(`/product/${product._id}`)}
+              key={product.id}
+              onClick={() => router.push(`/product/${product.id}`)}
               className="flex items-center justify-between border-b pb-4 cursor-pointer hover:bg-gray-50 transition"
             >
               <div className="flex items-center gap-4">
                 <Image
-                  src={product.image[0]}
+                  src={product.image_url}
                   alt={product.name}
                   width={80}
                   height={80}
@@ -62,7 +64,7 @@ const Wishlist = () => {
                 />
                 <div>
                   <h2 className="text-lg font-semibold">{product.name}</h2>
-                  <p className="text-gray-600">${product.offerPrice}</p>
+                  <p className="text-gray-600">${product.offer_price}</p>
                 </div>
               </div>
             </div>
