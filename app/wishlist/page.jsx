@@ -3,17 +3,13 @@ import React from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useAppContext } from "@/context/AppContext";
+import { supabase, useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/router";
 
 const Wishlist = () => {
-  const {
-    products,
-    router,
-    getWishlistProducts
-  } = useAppContext();
-
-  const wishlistProducts = getWishlistProducts(products); 
+  const [wishlistProducts, setWishlistProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   return (
     <>
