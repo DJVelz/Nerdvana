@@ -11,6 +11,34 @@ const Wishlist = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  // TEMPORARY: use a test user ID until authentication is ready
+  const testUserId = "your-test-user-uuid-here";
+
+  // Fetch wishlist items with related product info
+  const fetchWishlistProducts = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("wishlist")
+      .select(`
+        id,
+        product_id,
+        products(*)
+      `)
+      .eq("user_id", testUserId);
+
+    if (error) {
+      console.error("Error fetching wishlist:", error);
+      setWishlistProducts([]);
+    } else {
+      setWishlistProducts(data.map(item => item.products));
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchWishlistProducts();
+  }, []);
+  
   return (
     <>
       <Navbar />
