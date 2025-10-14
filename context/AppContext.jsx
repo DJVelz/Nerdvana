@@ -25,6 +25,11 @@ export const AppContextProvider = (props) => {
         setProducts(productsDummyData)
     }
 
+    const fetchProducts = async () => {
+        const { data, error } = await supabase.from('products').select('*');
+        
+    }
+
     const fetchUserData = async () => {
         setUserData(userDummyData)
     }
