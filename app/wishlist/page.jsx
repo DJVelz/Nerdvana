@@ -3,8 +3,9 @@ import React from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { supabase, useAppContext } from "@/context/AppContext";
+import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/router";
+import { supabase } from "@/lib/supabaseClient";
 
 const Wishlist = () => {
   const [wishlistProducts, setWishlistProducts] = useState([]);
