@@ -30,6 +30,9 @@ const Wishlist = () => {
       `)
       .eq("user_id", testUserId);
 
+    console.log("✅ Wishlist data:", data);
+    console.error("❌ Wishlist error:", error);
+
     if (error) {
       console.error("Error fetching wishlist:", error);
       setWishlistProducts([]);
