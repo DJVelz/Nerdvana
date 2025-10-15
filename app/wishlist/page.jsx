@@ -26,6 +26,7 @@ const Wishlist = () => {
       .select(`
         id,
         product_id,
+        products(*)
       `)
       .eq("user_id", testUserId);
 
