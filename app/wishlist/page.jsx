@@ -8,6 +8,8 @@ import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/router";
 import { supabase } from "@/lib/supabaseClient";
 
+export const dynamic = "force-dynamic";
+
 const Wishlist = () => {
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [loading, setLoading] = useState(true);
