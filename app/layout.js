@@ -6,7 +6,7 @@ import { Cinzel } from "next/font/google";
 
 const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
-const outfit = Outfit({ subsets: ['latin'], weight: ["300", "400", "500"] })
+// const outfit = Outfit({ subsets: ['latin'], weight: ["300", "400", "500"] })
 
 export const metadata = {
   title: "Nerdvana",
