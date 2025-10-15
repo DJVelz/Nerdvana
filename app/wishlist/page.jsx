@@ -16,7 +16,7 @@ const Wishlist = () => {
   const router = useRouter();
 
   // TEMPORARY: use a test user ID until authentication is ready
-  const testUserId = "cc4b1358-e187-4f02-8595-8d3a2826497a";
+  const testUserId = "eac21e6a-8a46-4f92-9977-b9d5a21e54bb";
 
   // Fetch wishlist items with related product info
   const fetchWishlistProducts = async () => {
