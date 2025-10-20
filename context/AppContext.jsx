@@ -26,8 +26,49 @@ export const AppContextProvider = (props) => {
         else setProducts(data);
     };
 
-    const addToCart = async (itemId) => {
+    const fetchWishlist = async (userId) => {
+        const {data, error } = await supabase
+            .from('wishlist')
+            .select(`
+                id,
+                product_id,
+                products(*)
+                `)
+                .eq('user_id', userId);
 
+            if (error) console.error(error);
+            return data;
+
+            const wishlistMap = {};
+        data.forEach((item) => {
+            wishlistMap[item.product_id] = true;
+        });   
+        setWishlistItems(wishlistMap);
+    };
+
+
+    const addToWishlist = (itemId) => {
+
+        let wishlistData = structuredClone(wishlistItems);
+        wishlistData[itemId] = true
+        setWishlistItems(wishlistData);
+    }
+
+    const removeFromWishlist = (itemId) => {
+        let wishlistData = structuredClone(wishlistItems);
+        delete wishlistData[itemId];
+        setWishlistItems(wishlistData);
+    }
+
+    const isInWishlist = (itemId) => {
+        return !!wishlistItems[itemId];
+    }
+
+    const getWishlistProducts = () => {
+    return products.filter((product) => wishlistItems[product._id]);
+    };    
+
+    const addToCart = async (itemId) => {
         let cartData = structuredClone(cartItems);
         if (cartData[itemId]) {
             cartData[itemId] += 1;
@@ -36,11 +77,9 @@ export const AppContextProvider = (props) => {
             cartData[itemId] = 1;
         }
         setCartItems(cartData);
-
     }
 
     const updateCartQuantity = async (itemId, quantity) => {
-
         let cartData = structuredClone(cartItems);
         if (quantity === 0) {
             delete cartData[itemId];
@@ -48,7 +87,6 @@ export const AppContextProvider = (props) => {
             cartData[itemId] = quantity;
         }
         setCartItems(cartData)
-
     }
 
     const getCartCount = () => {
@@ -72,40 +110,9 @@ export const AppContextProvider = (props) => {
         return Math.floor(totalAmount * 100) / 100;
     }
 
-    const addToWishlist = (itemId) => {
+    
 
-        let wishlistData = structuredClone(wishlistItems);
-        wishlistData[itemId] = true
-        setWishlistItems(wishlistData);
-    }
-
-    const removeFromWishlist = (itemId) => {
-        let wishlistData = structuredClone(wishlistItems);
-        delete wishlistData[itemId];
-        setWishlistItems(wishlistData);
-    }
-
-    const isInWishlist = (itemId) => {
-        return !!wishlistItems[itemId];
-    }
-
-    const getWishlistProducts = () => {
-    return products.filter((product) => wishlistItems[product._id]);
-    };
-
-    const fetchWishlist = async (userId) => {
-        const {data, error } = await supabase
-            .from('wishlist')
-            .select(`
-                id,
-                product_id,
-                products(*)
-                `)
-                .eq('user_id', userId);
-
-            if (error) console.error(error);
-            return data;
-    };
+    
 
     useEffect(() => {
         fetchProductData()
