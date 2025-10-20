@@ -13,13 +13,13 @@ export const AppContextProvider = (props) => {
 
     const currency = process.env.NEXT_PUBLIC_CURRENCY
     const router = useRouter()
-    const userId = userData?.id;
     const [products, setProducts] = useState([])
     const [userData, setUserData] = useState(false)
     const [isSeller, setIsSeller] = useState(true)
     const [cartItems, setCartItems] = useState({})
     const [wishlistItems, setWishlistItems] = useState({});
-
+    const userId = userData?.id;
+    
     const fetchUserData = async (userId) => {
         const { data, error } = await supabase
             .from("users")
