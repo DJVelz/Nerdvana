@@ -113,8 +113,8 @@ export const AppContextProvider = (props) => {
 
     useEffect(() => {
         fetchProducts();
-        fetchWishlist();
-    }, [])
+        if (userId) fetchWishlist();
+    }, [userId])
 
     const value = {
     currency,
