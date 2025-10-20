@@ -69,7 +69,7 @@ export const AppContextProvider = (props) => {
     }
 
     const getWishlistProducts = () => {
-    return products.filter((product) => wishlistItems[product._id]);
+    return products.filter((product) => wishlistItems[product.id]);
     };    
 
     const addToCart = async (itemId) => {
