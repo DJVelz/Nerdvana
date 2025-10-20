@@ -2,9 +2,11 @@ import { useRef } from "react";
 import ProductCard from "./ProductCard";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import { useAppContext } from "@/context/AppContext";
 
 export default function Carousel({ title, products }) {
     const carouselRef = useRef(null);
+    const { products } = useAppContext();
 
     return (
     <div className="w-full my-10">
