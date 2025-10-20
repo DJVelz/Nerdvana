@@ -51,7 +51,7 @@ export const AppContextProvider = (props) => {
         const { error } = await supabase.from("wishlist").insert([{ user_id: userId, product_id: productId }]);
         if (error) console.error("Error adding to wishlist:", error);
         else fetchWishlist(userId);
-    }
+    };
 
     const removeFromWishlist = async (productId) => {
         const { error } = await supabase
@@ -62,11 +62,11 @@ export const AppContextProvider = (props) => {
 
         if (error) console.error("Error removing from wishlist:", error);
         else fetchWishlist(userId);
-    }
+    };
 
     const isInWishlist = (itemId) => {
         return !!wishlistItems[productId];
-    }
+    };
 
     const getWishlistProducts = () => {
     return products.filter((product) => wishlistItems[product.id]);
@@ -86,17 +86,11 @@ export const AppContextProvider = (props) => {
             cartData[itemId] = quantity;
         }
         setCartItems(cartData)
-    }
+    };
 
     const getCartCount = () => {
-        let totalCount = 0;
-        for (const items in cartItems) {
-            if (cartItems[items] > 0) {
-                totalCount += cartItems[items];
-            }
-        }
-        return totalCount;
-    }
+    return Object.values(cartItems).reduce((sum, count) => sum + count, 0);
+    };
 
     const getCartAmount = () => {
         let totalAmount = 0;
