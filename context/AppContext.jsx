@@ -28,7 +28,7 @@ export const AppContextProvider = (props) => {
             .single();
         if (error) throw error;
         return data;
-    }
+    };
 
     const fetchProducts = async () => {
         const { data, error } = await supabase.from('products').select('*');
