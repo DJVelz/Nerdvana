@@ -26,10 +26,6 @@ export const AppContextProvider = (props) => {
         else setProducts(data);
     };
 
-    const fetchUserData = async () => {
-        setUserData(userDummyData)
-    }
-
     const addToCart = async (itemId) => {
 
         let cartData = structuredClone(cartItems);
