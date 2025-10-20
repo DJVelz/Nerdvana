@@ -99,10 +99,6 @@ export const AppContextProvider = (props) => {
     }, 0);
     };
 
-    
-
-    
-
     useEffect(() => {
         fetchProducts();
         fetchWishlist();
