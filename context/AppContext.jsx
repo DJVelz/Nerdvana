@@ -47,11 +47,10 @@ export const AppContextProvider = (props) => {
     };
 
 
-    const addToWishlist = (itemId) => {
-
-        let wishlistData = structuredClone(wishlistItems);
-        wishlistData[itemId] = true
-        setWishlistItems(wishlistData);
+    const addToWishlist = async (productId) => {
+        const { error } = await supabase.from("wishlist").insert([{ user_id: userId, product_id: productId }]);
+        if (error) console.error("Error adding to wishlist:", error);
+        else fetchWishlist(userId);
     }
 
     const removeFromWishlist = (itemId) => {
