@@ -37,23 +37,25 @@ export const AppContextProvider = (props) => {
     };
 
     const fetchWishlist = async (userId) => {
-        const {data, error } = await supabase
-            .from('wishlist')
-            .select(`
-                id,
-                product_id,
-                products(*)
-                `)
-                .eq('user_id', userId);
+    const { data, error } = await supabase
+        .from('wishlist')
+        .select(`
+        id,
+        product_id,
+        products(*)
+        `)
+        .eq('user_id', userId);
 
-            if (error) console.error(error);
-            return data;
+    if (error) {
+        console.error('Error fetching wishlist:', error);
+        return;
+    }
 
-            const wishlistMap = {};
-        data.forEach((item) => {
-            wishlistMap[item.product_id] = true;
-        });   
-        setWishlistItems(wishlistMap);
+    const wishlistMap = {};
+    data.forEach((item) => {
+        wishlistMap[item.product_id] = true;
+    });
+    setWishlistItems(wishlistMap);
     };
 
 
