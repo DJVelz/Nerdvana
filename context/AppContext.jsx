@@ -72,16 +72,11 @@ export const AppContextProvider = (props) => {
     return products.filter((product) => wishlistItems[product.id]);
     };    
 
-    const addToCart = async (itemId) => {
-        let cartData = structuredClone(cartItems);
-        if (cartData[itemId]) {
-            cartData[itemId] += 1;
-        }
-        else {
-            cartData[itemId] = 1;
-        }
-        setCartItems(cartData);
-    }
+    const addToCart = (itemId) => {
+    let cartData = structuredClone(cartItems);
+    cartData[itemId] = (cartData[itemId] || 0) + 1;
+    setCartItems(cartData);
+    };
 
     const updateCartQuantity = async (itemId, quantity) => {
         let cartData = structuredClone(cartItems);
