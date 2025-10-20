@@ -65,7 +65,7 @@ export const AppContextProvider = (props) => {
     }
 
     const isInWishlist = (itemId) => {
-        return !!wishlistItems[itemId];
+        return !!wishlistItems[productId];
     }
 
     const getWishlistProducts = () => {
