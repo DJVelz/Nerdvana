@@ -6,7 +6,6 @@ import { useAppContext } from "@/context/AppContext";
 
 export default function Carousel({ title, products }) {
     const carouselRef = useRef(null);
-    const { products } = useAppContext();
 
     return (
     <div className="w-full my-10">
