@@ -20,6 +20,16 @@ export const AppContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({})
     const [wishlistItems, setWishlistItems] = useState({});
 
+    const fetchUserData = async (userId) {
+        const { data, error } = await supabase
+            .from("users")
+            .select("*")
+            .eq("id", userId)
+            .single();
+        if (error) throw error;
+        return data;
+    }
+
     const fetchProducts = async () => {
         const { data, error } = await supabase.from('products').select('*');
         if (error) console.error('Error fetching products:', error);
