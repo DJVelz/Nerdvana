@@ -93,15 +93,11 @@ export const AppContextProvider = (props) => {
     };
 
     const getCartAmount = () => {
-        let totalAmount = 0;
-        for (const items in cartItems) {
-            let itemInfo = products.find((product) => product._id === items);
-            if (cartItems[items] > 0) {
-                totalAmount += itemInfo.offerPrice * cartItems[items];
-            }
-        }
-        return Math.floor(totalAmount * 100) / 100;
-    }
+    return Object.entries(cartItems).reduce((total, [id, qty]) => {
+      const itemInfo = products.find((product) => product.id === parseInt(id));
+      return itemInfo ? total + itemInfo.offer_price * qty : total;
+    }, 0);
+    };
 
     
 
