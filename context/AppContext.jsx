@@ -115,16 +115,23 @@ export const AppContextProvider = (props) => {
     }, [])
 
     const value = {
-        currency, router,
-        isSeller, setIsSeller,
-        userData, fetchUserData,
-        products, fetchProductData,
-        cartItems, setCartItems,
-        addToCart, updateCartQuantity,
-        getCartCount, getCartAmount,
-        addToWishlist, removeFromWishlist,
-        isInWishlist, getWishlistProducts
-    }
+    currency,
+    router,
+    isSeller,
+    setIsSeller,
+    userData,
+    products,
+    fetchProducts,
+    cartItems,
+    addToCart,
+    updateCartQuantity,
+    getCartCount,
+    getCartAmount,
+    addToWishlist,
+    removeFromWishlist,
+    isInWishlist,
+    getWishlistProducts,
+  };
 
     return (
         <AppContext.Provider value={value}>
