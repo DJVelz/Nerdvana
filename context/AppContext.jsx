@@ -53,10 +53,15 @@ export const AppContextProvider = (props) => {
         else fetchWishlist(userId);
     }
 
-    const removeFromWishlist = (itemId) => {
-        let wishlistData = structuredClone(wishlistItems);
-        delete wishlistData[itemId];
-        setWishlistItems(wishlistData);
+    const removeFromWishlist = async (productId) => {
+        const { error } = await supabase
+      .from("wishlist")
+      .delete()
+      .eq("user_id", userId)
+      .eq("product_id", productId);
+
+        if (error) console.error("Error removing from wishlist:", error);
+        else fetchWishlist(userId);
     }
 
     const isInWishlist = (itemId) => {
