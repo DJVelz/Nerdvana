@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
     >
       <div className="relative bg-gray-500/10 rounded-lg w-full h-52 flex items-center justify-center group">
         <Image
-          src={product.image}
+          src={product.image?.startsWith("/") ? product.image : `/images/${product.image}`}
           alt={product.name}
           width={800}
           height={800}
