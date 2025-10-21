@@ -18,7 +18,7 @@ export const AppContextProvider = (props) => {
     const [isSeller, setIsSeller] = useState(true)
     const [cartItems, setCartItems] = useState({})
     const [wishlistItems, setWishlistItems] = useState({});
-    const userId = userData?.id || 1;
+    const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
     
     const fetchUserData = async (userId) => {
         const { data, error } = await supabase
@@ -63,18 +63,19 @@ export const AppContextProvider = (props) => {
 
 
     const addToWishlist = async (itemId) => {
-        const userId = userData?.id || 1;
+        const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
         const { error } = await supabase.from("wishlist").insert([{ user_id: userId, product_id: itemId }]);
         if (error) console.error("Error adding to wishlist:", error);
         else fetchWishlist(userId);
     };
 
     const removeFromWishlist = async (productId) => {
+        const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
         const { error } = await supabase
-      .from("wishlist")
-      .delete()
-      .eq("user_id", userId)
-      .eq("product_id", productId);
+            .from("wishlist")
+            .delete()
+            .eq("user_id", userId)
+            .eq("product_id", productId);
 
         if (error) console.error("Error removing from wishlist:", error);
         else fetchWishlist(userId);
@@ -110,8 +111,8 @@ export const AppContextProvider = (props) => {
 
     const getCartAmount = () => {
     return Object.entries(cartItems).reduce((total, [id, qty]) => {
-      const itemInfo = products.find((product) => product.id === parseInt(id));
-      return itemInfo ? total + itemInfo.offerPrice * qty : total;
+        const itemInfo = products.find((product) => String(product.id) === String(id));
+        return itemInfo ? total + itemInfo.offerPrice * qty : total;
     }, 0);
     };
 
