@@ -69,16 +69,23 @@ export const AppContextProvider = (props) => {
         else fetchWishlist(userId);
     };
 
-    const removeFromWishlist = async (productId) => {
+    const removeFromWishlist = async (itemId) => {
         const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
         const { error } = await supabase
             .from("wishlist")
             .delete()
             .eq("user_id", userId)
-            .eq("product_id", productId);
+            .eq("product_id", itemId);
 
         if (error) console.error("Error removing from wishlist:", error);
-        else fetchWishlist(userId);
+        else {
+            // Update local state immediately for faster UI feedback
+            setWishlistItems((prev) => {
+            const updated = { ...prev };
+            delete updated[itemId];
+            return updated;
+            });
+        }
     };
 
     const isInWishlist = (itemId) => {
