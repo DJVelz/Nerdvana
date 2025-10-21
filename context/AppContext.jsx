@@ -33,7 +33,10 @@ export const AppContextProvider = (props) => {
     const fetchProducts = async () => {
         const { data, error } = await supabase.from('products').select('*');
         if (error) console.error('Error fetching products:', error);
-        else setProducts(data);
+        else {
+            console.log('Fetched products:', data);
+            setProducts(data);
+        }
     };
 
     const fetchWishlist = async (userId) => {
