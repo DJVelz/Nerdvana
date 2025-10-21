@@ -18,7 +18,7 @@ export const AppContextProvider = (props) => {
     const [isSeller, setIsSeller] = useState(true)
     const [cartItems, setCartItems] = useState({})
     const [wishlistItems, setWishlistItems] = useState({});
-    const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
+    const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
     
     const fetchUserData = async (userId) => {
         const { data, error } = await supabase
@@ -63,14 +63,14 @@ export const AppContextProvider = (props) => {
 
 
     const addToWishlist = async (itemId) => {
-        const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
+        const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
         const { error } = await supabase.from("wishlist").insert([{ user_id: userId, product_id: itemId }]);
         if (error) console.error("Error adding to wishlist:", error);
         else fetchWishlist(userId);
     };
 
     const removeFromWishlist = async (itemId) => {
-        const userId = userData?.id || "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
+        const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
         const { error } = await supabase
             .from("wishlist")
             .delete()
@@ -125,7 +125,10 @@ export const AppContextProvider = (props) => {
 
     useEffect(() => {
         fetchProducts();
-    }, [])
+        if (userData?.id) {
+        fetchWishlist(userData.id);
+    }
+    }, [userData]);
 
     const value = {
     currency,
