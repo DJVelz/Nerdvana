@@ -111,7 +111,7 @@ export const AppContextProvider = (props) => {
     const getCartAmount = () => {
     return Object.entries(cartItems).reduce((total, [id, qty]) => {
       const itemInfo = products.find((product) => product.id === parseInt(id));
-      return itemInfo ? total + itemInfo.offer_price * qty : total;
+      return itemInfo ? total + itemInfo.offerPrice * qty : total;
     }, 0);
     };
 
