@@ -43,6 +43,7 @@ const Product = () => {
                         />
                     </div>
 
+                    {/* 
                     <div className="grid grid-cols-4 gap-4">
                         {productData.image.map((image, index) => (
                             <div
@@ -61,6 +62,7 @@ const Product = () => {
 
                         ))}
                     </div>
+                    */}
                 </div>
 
                 <div className="flex flex-col">
