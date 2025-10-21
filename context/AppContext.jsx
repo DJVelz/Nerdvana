@@ -34,8 +34,8 @@ export const AppContextProvider = (props) => {
         const { data, error } = await supabase.from('products').select('*');
         if (error) console.error('Error fetching products:', error);
         else {
-            console.log('Fetched products:', data);
             setProducts(data);
+            console.log('Fetched products:', data);
         }
     };
 
