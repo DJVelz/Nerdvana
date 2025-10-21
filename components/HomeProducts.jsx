@@ -17,7 +17,7 @@ const HomeProducts = () => {
 
       <Carousel
         title="Prep for your next DnD session"
-        products={products.filter((p) => p.category.includes("fantasy"))}
+        products={products.filter((p) => p.category?.includes("fantasy"))}
       />
       </div>
       <button
