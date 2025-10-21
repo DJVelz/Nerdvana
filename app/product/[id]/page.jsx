@@ -35,8 +35,8 @@ const Product = () => {
                 <div className="px-5 lg:px-16 xl:px-20">
                     <div className="rounded-lg overflow-hidden bg-gray-500/10 mb-4">
                         <Image
-                            src={productData.image}
-                            alt="alt"
+                            src={mainImage || productData.image}
+                            alt={productData.name}
                             className="w-full h-auto object-cover mix-blend-multiply"
                             width={1280}
                             height={720}
