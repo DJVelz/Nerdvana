@@ -18,7 +18,7 @@ export const AppContextProvider = (props) => {
     const [isSeller, setIsSeller] = useState(true)
     const [cartItems, setCartItems] = useState({})
     const [wishlistItems, setWishlistItems] = useState({});
-    const userId = userData?.id;
+    const userId = userData?.id || 1;
     
     const fetchUserData = async (userId) => {
         const { data, error } = await supabase
