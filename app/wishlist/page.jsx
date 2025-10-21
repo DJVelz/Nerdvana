@@ -63,7 +63,7 @@ const Wishlist = () => {
             >
               <div className="flex items-center gap-4">
                 <Image
-                  src={product.image_url}
+                  src={product.image}
                   alt={product.name}
                   width={80}
                   height={80}
