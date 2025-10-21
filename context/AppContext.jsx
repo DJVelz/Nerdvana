@@ -62,8 +62,9 @@ export const AppContextProvider = (props) => {
     };
 
 
-    const addToWishlist = async (productId) => {
-        const { error } = await supabase.from("wishlist").insert([{ user_id: userId, product_id: productId }]);
+    const addToWishlist = async (itemId) => {
+        const userId = userData?.id || 1;
+        const { error } = await supabase.from("wishlist").insert([{ user_id: userId, product_id: itemId }]);
         if (error) console.error("Error adding to wishlist:", error);
         else fetchWishlist(userId);
     };
