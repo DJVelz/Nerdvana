@@ -60,7 +60,7 @@ const Cart = () => {
                           </div>
                           <button
                             className="md:hidden text-xs text-light_purple mt-1"
-                            onClick={() => updateCartQuantity(product._id, 0)}
+                            onClick={() => updateCartQuantity(product.id, 0)}
                           >
                             Remove
                           </button>
@@ -69,7 +69,7 @@ const Cart = () => {
                           <p className="text-gray-800">{product.name}</p>
                           <button
                             className="text-xs text-light_purple mt-1"
-                            onClick={() => updateCartQuantity(product._id, 0)}
+                            onClick={() => updateCartQuantity(product.id, 0)}
                           >
                             Remove
                           </button>
@@ -78,15 +78,15 @@ const Cart = () => {
                       <td className="py-4 md:px-4 px-1 text-gray-600">${product.offerPrice}</td>
                       <td className="py-4 md:px-4 px-1">
                         <div className="flex items-center md:gap-2 gap-1">
-                          <button onClick={() => updateCartQuantity(product._id, cartItems[itemId] - 1)}>
+                          <button onClick={() => updateCartQuantity(product.id, cartItems[itemId] - 1)}>
                             <Image
                               src={assets.decrease_arrow}
                               alt="decrease_arrow"
                               className="w-4 h-4"
                             />
                           </button>
-                          <input onChange={e => updateCartQuantity(product._id, Number(e.target.value))} type="number" value={cartItems[itemId]} className="w-8 border text-center appearance-none"></input>
-                          <button onClick={() => addToCart(product._id)}>
+                          <input onChange={e => updateCartQuantity(product.id, Number(e.target.value))} type="number" value={cartItems[itemId]} className="w-8 border text-center appearance-none"></input>
+                          <button onClick={() => addToCart(product.id)}>
                             <Image
                               src={assets.increase_arrow}
                               alt="increase_arrow"
