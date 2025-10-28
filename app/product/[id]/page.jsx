@@ -9,6 +9,7 @@ import { useRouter, useParams } from "next/navigation";
 import Loading from "@/components/Loading";
 import { useAppContext } from "@/context/AppContext";
 import React from "react";
+import Carousel from "@/components/Carousel";
 
 const Product = () => {
 
@@ -115,9 +116,23 @@ const Product = () => {
                     <p className="text-3xl font-medium">Similar <span className="font-medium text-light_purple">Products</span></p>
                     <div className="w-28 h-0.5 bg-purple mt-2"></div>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6 pb-14 w-full">
-                    {products.slice(0, 5).map((product, index) => <ProductCard key={index} product={product} />)}
-                </div>
+                <Carousel 
+                    products={products
+                        .filter((p) => {
+                        if (p.id === productData.id) return false;
+                        const currentCategories = productData.category
+                            ?.toLowerCase()
+                            .split(',')
+                            .map((c) => c.trim());
+                        const otherCategories = p.category
+                            ?.toLowerCase()
+                            .split(',')
+                            .map((c) => c.trim());
+                        if (!currentCategories || !otherCategories) return false;
+                        return currentCategories.some((cat) => otherCategories.includes(cat));
+                        })
+                        .slice(0, 10)}
+                />
                 <button onClick={() => router.push('/all-products')} className="px-8 py-2 mb-16 border rounded text-gray-500/70 hover:bg-slate-50/90 transition">
                     See more
                 </button>
