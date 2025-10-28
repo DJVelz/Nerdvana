@@ -20,33 +20,34 @@ const Wishlist = () => {
 
   // Fetch wishlist items with related product info
   const fetchWishlistProducts = async () => {
-  const userId = testUserId; // explicitly use your test ID
-  if (!userId) {
-    console.warn("No user ID found, skipping wishlist fetch.");
-    return;
-  }
+  setLoading(true);
 
-  const { data, error } = await supabase
-    .from("wishlist")
-    .select("id, product_id, products(*)")
-    .eq("user_id", userId);
+  try {
+    // Use the test user ID directly
+    const userId = testUserId;
 
-  if (error) {
-    console.error("Error fetching wishlist:", error.message);
-    return;
-  }
+    const { data, error } = await supabase
+      .from("wishlist")
+      .select("id, product_id, products(*)")
+      .eq("user_id", userId);
 
-  if (!data || data.length === 0) {
-    console.log("No wishlist items found.");
+    if (error) {
+      console.error("Error fetching wishlist:", error);
+      setWishlistProducts([]);
+    } else if (!data || data.length === 0) {
+      // No items in wishlist
+      setWishlistProducts([]);
+    } else {
+      // Map to only products
+      setWishlistProducts(data.map((item) => item.products));
+    }
+  } catch (err) {
+    console.error("Unexpected error fetching wishlist:", err);
     setWishlistProducts([]);
-    return;
+  } finally {
+    setLoading(false);
   }
-
-  console.log("Fetched wishlist products:", data);
-  setWishlistProducts(data.map((item) => item.products));
 };
-
-
 
   useEffect(() => {
     fetchWishlistProducts();
