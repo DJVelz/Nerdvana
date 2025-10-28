@@ -81,19 +81,31 @@ export const AppContextProvider = ({ children }) => {
   };
 
   // Remove from wishlist
-  const removeFromWishlist = async (itemId) => {
-    try {
-      const { error } = await supabase
+  const removeFromWishlist = async (productId) => {
+    const wishlistRowId = wishlistItems[productId];
+
+    if (!wishlistRowId) {
+        console.warn("No wishlist row found for product:", productId);
+        return;
+    }
+
+    const { error } = await supabase
         .from("wishlist")
         .delete()
-        .eq("user_id", userId)
-        .eq("product_id", itemId);
-      if (error) throw error;
-      await fetchWishlist(userId); // keep sync with Supabase
-    } catch (err) {
-      console.error("Error removing from wishlist:", err);
+        .eq("id", wishlistRowId);
+
+    if (error) {
+        console.error("Error removing from wishlist:", error);
+    } else {
+        // Update local state immediately
+        setWishlistItems((prev) => {
+        const updated = { ...prev };
+        delete updated[productId];
+        return updated;
+        });
     }
-  };
+    };
+
 
   const isInWishlist = (itemId) => !!wishlistItems[itemId];
 
