@@ -17,7 +17,7 @@ export const AppContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
   const [wishlistItems, setWishlistItems] = useState({});
 
-  // Fetch user
+  /* Fetch user
   const fetchUserData = async (userId) => {
     try {
       const { data, error } = await supabase
@@ -31,6 +31,7 @@ export const AppContextProvider = ({ children }) => {
       console.error("Error fetching user:", err);
     }
   };
+  */
 
   // Fetch products
   const fetchProducts = async () => {
@@ -124,7 +125,7 @@ export const AppContextProvider = ({ children }) => {
     }, 0);
 
   useEffect(() => {
-    fetchUserData(userId);
+    //fetchUserData(userId);
     fetchProducts();
     fetchWishlist(userId);
   }, []);
