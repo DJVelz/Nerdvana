@@ -19,6 +19,12 @@ const HomeProducts = () => {
         title="Prep for your next DnD session"
         products={products.filter((p) => p.category?.includes("fantasy"))}
       />
+
+      <Carousel
+        title="Excelsior! Find all things comics"
+        products={products.filter((p) => p.category?.includes("comics"))}
+      />
+      
       </div>
       <button
         onClick={() => router.push("/all-products")}
