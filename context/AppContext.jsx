@@ -68,17 +68,23 @@ export const AppContextProvider = ({ children }) => {
 
 
   // Add to wishlist
-  const addToWishlist = async (itemId) => {
-    try {
-      const { error } = await supabase
-        .from("wishlist")
-        .insert([{ user_id: userId, product_id: itemId }]);
-      if (error) throw error;
-      await fetchWishlist(userId);
-    } catch (err) {
-      console.error("Error adding to wishlist:", err);
-    }
-  };
+  const addToWishlist = async (productId) => {
+  const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
+  const { data, error } = await supabase
+    .from("wishlist")
+    .insert([{ user_id: userId, product_id: productId }])
+    .select();
+
+  if (error) {
+    console.error("Error adding to wishlist:", error);
+  } else {
+    // The inserted row will have an id; update local state
+    setWishlistItems((prev) => ({
+      ...prev,
+      [productId]: data[0].id,
+    }));
+  }
+};
 
   // Remove from wishlist
   const removeFromWishlist = async (productId) => {
