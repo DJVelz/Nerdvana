@@ -9,7 +9,7 @@ const HomeProducts = () => {
 
   return (
     <div className="flex flex-col items-center pt-14 w-full">
-      <div className="w-full max-w-7xl px-4">
+      <div className="w-full max-w-7xl px-4 pt-6">
         <Carousel
         title="Products under $25"
         products={products.filter((p) => p.price < 25.0 || p.offerPrice < 25.0)}
@@ -24,7 +24,7 @@ const HomeProducts = () => {
         title="Excelsior! Find all things comics"
         products={products.filter((p) => p.category?.includes("comics"))}
       />
-      
+
       </div>
       <button
         onClick={() => router.push("/all-products")}
