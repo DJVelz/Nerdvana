@@ -10,28 +10,32 @@ export const useAppContext = () => useContext(AppContext);
 export const AppContextProvider = ({ children }) => {
   const currency = process.env.NEXT_PUBLIC_CURRENCY;
   const router = useRouter();
-  const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85"; // temp hardcoded
+  
   const [products, setProducts] = useState([]);
   const [userData, setUserData] = useState(null);
   const [isSeller, setIsSeller] = useState(true);
   const [cartItems, setCartItems] = useState({});
   const [wishlistItems, setWishlistItems] = useState({});
 
-  /* Fetch user
-  const fetchUserData = async (userId) => {
-    try {
-      const { data, error } = await supabase
-        .from("users")
-        .select("*")
-        .eq("id", userId)
-        .single();
-      if (error) throw error;
-      setUserData(data);
-    } catch (err) {
-      console.error("Error fetching user:", err);
-    }
-  };
-  */
+  // Auth Handling
+  useEffect(() => {
+    // Get session on load
+    const fetchSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      setUser(data?.session?.user || null);
+    };
+
+    fetchSession();
+
+    // Listen for auth changes (login/logout)
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => {
+      listener?.subscription.unsubscribe();
+    };
+  }, []);
 
   // Fetch products
   const fetchProducts = async () => {
