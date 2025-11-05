@@ -71,7 +71,7 @@ export const AppContextProvider = ({ children }) => {
   const addToWishlist = async (productId) => {
     if (!user) {
       alert("Please log in to add items to your wishlist.");
-      router.push("/login");
+      router.push("/user");
       return;
     }
 
