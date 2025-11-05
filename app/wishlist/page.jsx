@@ -1,6 +1,5 @@
 'use client'
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,51 +14,50 @@ const Wishlist = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const { userData } = useAppContext();
+  const { user } = useAppContext();
 
-  // Fetch wishlist items with related product info
-  const fetchWishlistProducts = async () => {
-  setLoading(true);
-
-  try {
-    if (!userData?.id) {
-       setLoading(false);
-       return;
-    }
-
-    useEffect(() => {
-      if (userData === null) {
-        router.push("/user");
-      }
-    }, [userData]);
-    const userId = userData.id;
-
-    const { data, error } = await supabase
-      .from("wishlist")
-      .select("id, product_id, products(*)")
-      .eq("user_id", userId);
-
-    if (error) {
-      console.error("Error fetching wishlist:", error);
-      setWishlistProducts([]);
-    } else if (!data || data.length === 0) {
-      // No items in wishlist
-      setWishlistProducts([]);
-    } else {
-      // Map to only products
-      setWishlistProducts(data.map((item) => item.products));
-    }
-  } catch (err) {
-    console.error("Unexpected error fetching wishlist:", err);
-    setWishlistProducts([]);
-  } finally {
-    setLoading(false);
-  }
-};
-
+  // Redirect if no user is logged in
   useEffect(() => {
+    if (user === null) {
+      router.push("/user"); // or /login if you renamed it
+    }
+  }, [user]);
+
+  // Fetch wishlist items when the user changes
+  useEffect(() => {
+    const fetchWishlistProducts = async () => {
+      if (!user?.id) {
+        setWishlistProducts([]);
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("wishlist")
+          .select("id, product_id, products(*)")
+          .eq("user_id", user.id);
+
+        if (error) {
+          console.error("Error fetching wishlist:", error);
+          setWishlistProducts([]);
+        } else if (!data || data.length === 0) {
+          setWishlistProducts([]);
+        } else {
+          // ✅ Map the joined results
+          setWishlistProducts(data.map((item) => item.products));
+        }
+      } catch (err) {
+        console.error("Unexpected error fetching wishlist:", err);
+        setWishlistProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchWishlistProducts();
-  }, []);
+  }, [user]); // re-run if user changes
 
   return (
     <>
