@@ -4,20 +4,20 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 export const AppContext = createContext();
-
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }) => {
   const currency = process.env.NEXT_PUBLIC_CURRENCY;
   const router = useRouter();
-  
-  const [products, setProducts] = useState([]);
-  const [userData, setUserData] = useState(null);
-  const [isSeller, setIsSeller] = useState(true);
-  const [cartItems, setCartItems] = useState({});
-  const [wishlistItems, setWishlistItems] = useState({});
 
-  // Auth Handling
+  // State
+  const [user, setUser] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [wishlistItems, setWishlistItems] = useState({});
+  const [cartItems, setCartItems] = useState({});
+  const [isSeller, setIsSeller] = useState(true);
+
+  // ✅ AUTH HANDLING ---------------------------------------------------
   useEffect(() => {
     // Get session on load
     const fetchSession = async () => {
@@ -37,7 +37,7 @@ export const AppContextProvider = ({ children }) => {
     };
   }, []);
 
-  // Fetch products
+  // ✅ FETCH PRODUCTS --------------------------------------------------
   const fetchProducts = async () => {
     try {
       const { data, error } = await supabase.from("products").select("*");
@@ -49,92 +49,84 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
-  // Fetch wishlist
+  // ✅ WISHLIST --------------------------------------------------------
   const fetchWishlist = async (userId) => {
-  const { data, error } = await supabase
-    .from("wishlist")
-    .select("id, product_id")
-    .eq("user_id", userId);
-
-  if (error) {
-    console.error("Error fetching wishlist:", error);
-    return;
-  }
-
-  // Map product_id → wishlist row id
-  const wishlistMap = {};
-  data.forEach((item) => {
-    wishlistMap[item.product_id] = item.id;
-  });
-
-  setWishlistItems(wishlistMap);
-};
-
-
-  // Add to wishlist
-  const addToWishlist = async (productId) => {
-  const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
-  const { data, error } = await supabase
-    .from("wishlist")
-    .insert([{ user_id: userId, product_id: productId }])
-    .select();
-
-  if (error) {
-    console.error("Error adding to wishlist:", error);
-  } else {
-    // The inserted row will have an id; update local state
-    setWishlistItems((prev) => ({
-      ...prev,
-      [productId]: data[0].id,
-    }));
-  }
-};
-
-  // Remove from wishlist
-  const removeFromWishlist = async (productId) => {
-    const wishlistRowId = wishlistItems[productId];
-
-    if (!wishlistRowId) {
-        console.warn("No wishlist row found for product:", productId);
-        return;
-    }
-
-    const { error } = await supabase
-        .from("wishlist")
-        .delete()
-        .eq("id", wishlistRowId);
+    if (!userId) return;
+    const { data, error } = await supabase
+      .from("wishlist")
+      .select("id, product_id")
+      .eq("user_id", userId);
 
     if (error) {
-        console.error("Error removing from wishlist:", error);
+      console.error("Error fetching wishlist:", error);
+      return;
+    }
+
+    const wishlistMap = {};
+    data.forEach((item) => {
+      wishlistMap[item.product_id] = item.id;
+    });
+
+    setWishlistItems(wishlistMap);
+  };
+
+  const addToWishlist = async (productId) => {
+    if (!user) {
+      alert("Please log in to add items to your wishlist.");
+      router.push("/login");
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from("wishlist")
+      .insert([{ user_id: user.id, product_id: productId }])
+      .select();
+
+    if (error) {
+      console.error("Error adding to wishlist:", error);
     } else {
-        // Update local state immediately
-        setWishlistItems((prev) => {
+      setWishlistItems((prev) => ({
+        ...prev,
+        [productId]: data[0].id,
+      }));
+    }
+  };
+
+  const removeFromWishlist = async (productId) => {
+    const wishlistRowId = wishlistItems[productId];
+    if (!wishlistRowId) return;
+
+    const { error } = await supabase
+      .from("wishlist")
+      .delete()
+      .eq("id", wishlistRowId);
+
+    if (error) console.error("Error removing from wishlist:", error);
+    else {
+      setWishlistItems((prev) => {
         const updated = { ...prev };
         delete updated[productId];
         return updated;
-        });
+      });
     }
-    };
+  };
 
+  const isInWishlist = (id) => !!wishlistItems[id];
+  const getWishlistProducts = () => products.filter((p) => wishlistItems[p.id]);
 
-  const isInWishlist = (itemId) => !!wishlistItems[itemId];
-
-  const getWishlistProducts = () =>
-    products.filter((product) => wishlistItems[product.id]);
-
-  // CART HANDLERS
-  const addToCart = (itemId) => {
+  // ✅ CART ------------------------------------------------------------
+  const addToCart = (id) => {
     setCartItems((prev) => ({
       ...prev,
-      [itemId]: (prev[itemId] || 0) + 1,
+      [id]: (prev[id] || 0) + 1,
     }));
   };
 
-  const updateCartQuantity = (itemId, quantity) => {
+  const updateCartQuantity = (id, qty) => {
     setCartItems((prev) => {
       const updated = { ...prev };
-      if (quantity === 0) delete updated[itemId];
-      else updated[itemId] = quantity;
+      if (qty === 0) delete updated[id];
+      else updated[id] = qty;
       return updated;
     });
   };
@@ -148,29 +140,42 @@ export const AppContextProvider = ({ children }) => {
       return item ? total + item.offerPrice * qty : total;
     }, 0);
 
+  // ✅ INIT ------------------------------------------------------------
   useEffect(() => {
-    //fetchUserData(userId);
     fetchProducts();
-    fetchWishlist(userId);
   }, []);
 
+  useEffect(() => {
+    if (user) fetchWishlist(user.id);
+  }, [user]);
+
+  // ✅ LOGOUT ----------------------------------------------------------
+  const logout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    router.push("/");
+  };
+
+  // ✅ VALUE -----------------------------------------------------------
   const value = {
     currency,
     router,
+    user,
     isSeller,
     setIsSeller,
-    userData,
     products,
     fetchProducts,
+    wishlistItems,
+    addToWishlist,
+    removeFromWishlist,
+    isInWishlist,
+    getWishlistProducts,
     cartItems,
     addToCart,
     updateCartQuantity,
     getCartCount,
     getCartAmount,
-    addToWishlist,
-    removeFromWishlist,
-    isInWishlist,
-    getWishlistProducts,
+    logout,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
