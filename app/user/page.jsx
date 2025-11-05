@@ -23,7 +23,7 @@ export default function LoginPage() {
     if (error) {
       setMessage(`Error: ${error.message}`);
     } else {
-      setMessage("✅ Magic link sent! Check your email to log in.");
+      setMessage("Magic link sent! Check your email to log in.");
     }
   };
 
