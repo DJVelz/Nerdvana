@@ -15,16 +15,18 @@ const Wishlist = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  // TEMPORARY: use a test user ID until authentication is ready
-  const testUserId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
+  const { userData } = useAppContext();
 
   // Fetch wishlist items with related product info
   const fetchWishlistProducts = async () => {
   setLoading(true);
 
   try {
-    // Use the test user ID directly
-    const userId = testUserId;
+    if (!userData?.id) {
+       setLoading(false);
+       return;
+    }
+    const userId = userData.id;
 
     const { data, error } = await supabase
       .from("wishlist")
