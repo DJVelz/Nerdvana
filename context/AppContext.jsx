@@ -37,6 +37,31 @@ export const AppContextProvider = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+  const getUser = async () => {
+    const { data, error } = await supabase.auth.getUser();
+    if (data?.user) {
+      setUserData(data.user);
+    } else {
+      setUserData(null);
+    }
+  };
+
+  getUser();
+
+  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    if (session?.user) {
+      setUserData(session.user);
+    } else {
+      setUserData(null);
+    }
+  });
+
+  return () => {
+    listener.subscription.unsubscribe();
+  };
+}, []);
+
   // ✅ FETCH PRODUCTS --------------------------------------------------
   const fetchProducts = async () => {
     try {
