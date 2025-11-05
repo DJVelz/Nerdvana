@@ -19,7 +19,6 @@ export const AppContextProvider = ({ children }) => {
 
   // ✅ AUTH HANDLING ---------------------------------------------------
   useEffect(() => {
-    // Get session on load
     const fetchSession = async () => {
       const { data } = await supabase.auth.getSession();
       setUser(data?.session?.user || null);
@@ -27,7 +26,6 @@ export const AppContextProvider = ({ children }) => {
 
     fetchSession();
 
-    // Listen for auth changes (login/logout)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
     });
@@ -36,31 +34,6 @@ export const AppContextProvider = ({ children }) => {
       listener?.subscription.unsubscribe();
     };
   }, []);
-
-  useEffect(() => {
-  const getUser = async () => {
-    const { data, error } = await supabase.auth.getUser();
-    if (data?.user) {
-      setUserData(data.user);
-    } else {
-      setUserData(null);
-    }
-  };
-
-  getUser();
-
-  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-    if (session?.user) {
-      setUserData(session.user);
-    } else {
-      setUserData(null);
-    }
-  });
-
-  return () => {
-    listener.subscription.unsubscribe();
-  };
-}, []);
 
   // ✅ FETCH PRODUCTS --------------------------------------------------
   const fetchProducts = async () => {

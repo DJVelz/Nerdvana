@@ -26,6 +26,12 @@ const Wishlist = () => {
        setLoading(false);
        return;
     }
+
+    useEffect(() => {
+      if (userData === null) {
+        router.push("/user");
+      }
+    }, [userData]);
     const userId = userData.id;
 
     const { data, error } = await supabase
