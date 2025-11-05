@@ -1,51 +1,64 @@
 "use client";
 import { useState } from "react";
-import { assets } from "@/public/assets/assets";
+import { supabase } from "@/lib/supabaseClient"; 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export default function RegisterPage() {
-    const [formData, setFormData] = useState({ name: "", email: ""});
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value});
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log("Collected data:", formData);
-        alert(`Account created for ${formData.name} (${formData.email})`);
-    };
+    setMessage("Sending magic link...");
 
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
 
-    return(
-        <>
-            <Navbar/>
-                <div className="flex flex-col items-center justify-center min-h-screen">
-                    <h1 className="text-2x1 font-bold mb-4">Create Account</h1>
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-64">
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Name"
-                            onChange={handleChange}
-                            className="border p-2 rounded"
-                            required
-                            />
-                        <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        onChange={handleChange}
-                        className="border p-2 rounded"
-                        required
-                        />
-                        <button type="submit" className="bg-light_purple text-white p-2 rounded hover:bg-purple">
-                            Register
-                        </button>
-                    </form>
-                </div>
-            <Footer/>
-        </>
-    );
+    if (error) {
+      setMessage(`Error: ${error.message}`);
+    } else {
+      setMessage("✅ Magic link sent! Check your email to log in.");
+    }
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className="flex flex-col items-center justify-center min-h-screen px-4">
+        <h1 className="text-2xl font-bold mb-6">Sign In with Magic Link</h1>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 w-72 bg-gray-100 p-6 rounded-lg shadow-md"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            onChange={(e) => setEmail(e.target.value)}
+            className="border p-2 rounded"
+            required
+          />
+
+          <button
+            type="submit"
+            className="bg-light_purple text-white p-2 rounded hover:bg-purple transition"
+          >
+            Send Magic Link
+          </button>
+        </form>
+
+        {message && (
+          <p className="mt-4 text-gray-700 text-center">{message}</p>
+        )}
+      </div>
+      <Footer />
+    </>
+  );
 }
