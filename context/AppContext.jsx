@@ -4,23 +4,39 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 export const AppContext = createContext();
+
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }) => {
-  const currency = process.env.NEXT_PUBLIC_CURRENCY || "$";
+  const currency = process.env.NEXT_PUBLIC_CURRENCY;
   const router = useRouter();
-  
-  // For now using a hard-coded test user id:
-  const testUserId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
-
+  const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85"; // temp hardcoded
   const [products, setProducts] = useState([]);
+  const [userData, setUserData] = useState(null);
+  const [isSeller, setIsSeller] = useState(true);
   const [cartItems, setCartItems] = useState({});
   const [wishlistItems, setWishlistItems] = useState({});
 
-  // Fetch products once
+  /* Fetch user
+  const fetchUserData = async (userId) => {
+    try {
+      const { data, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", userId)
+        .single();
+      if (error) throw error;
+      setUserData(data);
+    } catch (err) {
+      console.error("Error fetching user:", err);
+    }
+  };
+  */
+
+  // Fetch products
   const fetchProducts = async () => {
     try {
-      const { data, error } = await supabase.from('products').select('*');
+      const { data, error } = await supabase.from("products").select("*");
       if (error) throw error;
       setProducts(data);
       console.log("Fetched products:", data);
@@ -29,130 +45,119 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
-  // Fetch wishlist for test user id
+  // Fetch wishlist
   const fetchWishlist = async (userId) => {
-    try {
-      const { data, error } = await supabase
-        .from('wishlist')
-        .select('product_id')
-        .eq('user_id', userId);
+  const { data, error } = await supabase
+    .from("wishlist")
+    .select("id, product_id")
+    .eq("user_id", userId);
 
-      if (error) throw error;
+  if (error) {
+    console.error("Error fetching wishlist:", error);
+    return;
+  }
 
-      const wishlistMap = {};
-      data.forEach((item) => {
-        wishlistMap[item.product_id] = true;
-      });
-      setWishlistItems(wishlistMap);
-      console.log("Fetched wishlist:", wishlistMap);
-    } catch (err) {
-      console.error("Error fetching wishlist:", err);
+  // Map product_id → wishlist row id
+  const wishlistMap = {};
+  data.forEach((item) => {
+    wishlistMap[item.product_id] = item.id;
+  });
+
+  setWishlistItems(wishlistMap);
+};
+
+
+  // Add to wishlist
+  const addToWishlist = async (productId) => {
+  const userId = "94d08ac6-490c-4bd7-9f16-79850d3e3a85";
+  const { data, error } = await supabase
+    .from("wishlist")
+    .insert([{ user_id: userId, product_id: productId }])
+    .select();
+
+  if (error) {
+    console.error("Error adding to wishlist:", error);
+  } else {
+    // The inserted row will have an id; update local state
+    setWishlistItems((prev) => ({
+      ...prev,
+      [productId]: data[0].id,
+    }));
+  }
+};
+
+  // Remove from wishlist
+  const removeFromWishlist = async (productId) => {
+    const wishlistRowId = wishlistItems[productId];
+
+    if (!wishlistRowId) {
+        console.warn("No wishlist row found for product:", productId);
+        return;
     }
-  };
 
-  const addToWishlist = async (itemId) => {
-    try {
-      const productId = String(itemId).trim();
-      const { error } = await supabase
-        .from("wishlist")
-        .insert([{ user_id: testUserId, product_id: productId }]);
-
-      if (error) throw error;
-
-      // refresh wishlist
-      await fetchWishlist(testUserId);
-    } catch (err) {
-      console.error("Error adding to wishlist:", err);
-    }
-  };
-
-  const removeFromWishlist = async (itemId) => {
-    try {
-      const productId = String(itemId).trim();
-      console.log("🗑️ Attempting to remove from wishlist:", { userId: testUserId, productId });
-
-      // Optional debugging before delete
-      const { data: existing, error: checkError } = await supabase
-        .from("wishlist")
-        .select("*")
-        .eq("user_id", testUserId)
-        .eq("product_id", productId);
-      console.log("🔍 Wishlist entries matching before delete:", existing, checkError);
-
-      const { data, error } = await supabase
+    const { error } = await supabase
         .from("wishlist")
         .delete()
-        .eq("user_id", testUserId)
-        .eq("product_id", productId)
-        .select(); // return deleted rows
+        .eq("id", wishlistRowId);
 
-      if (error) throw error;
-
-      if (!data || data.length === 0) {
-        console.warn("⚠️ No wishlist item matched the delete query. Check IDs or FK relationships.");
-      } else {
-        console.log("✅ Removed from wishlist:", data);
-      }
-
-      // Update local state
-      setWishlistItems(prev => {
+    if (error) {
+        console.error("Error removing from wishlist:", error);
+    } else {
+        // Update local state immediately
+        setWishlistItems((prev) => {
         const updated = { ...prev };
         delete updated[productId];
         return updated;
-      });
-    } catch (err) {
-      console.error("Error removing from wishlist:", err);
+        });
     }
-  };
+    };
 
-  const isInWishlist = (itemId) => {
-    return !!wishlistItems[String(itemId).trim()];
-  };
 
-  const getWishlistProducts = () => {
-    return products.filter(p => wishlistItems[String(p.id)]);
-  };
+  const isInWishlist = (itemId) => !!wishlistItems[itemId];
 
+  const getWishlistProducts = () =>
+    products.filter((product) => wishlistItems[product.id]);
+
+  // CART HANDLERS
   const addToCart = (itemId) => {
-    setCartItems(prev => ({
+    setCartItems((prev) => ({
       ...prev,
-      [String(itemId)]: (prev[String(itemId)] || 0) + 1
+      [itemId]: (prev[itemId] || 0) + 1,
     }));
-    console.log("Cart updated:", cartItems);
   };
 
   const updateCartQuantity = (itemId, quantity) => {
-    setCartItems(prev => {
+    setCartItems((prev) => {
       const updated = { ...prev };
-      if (quantity === 0) {
-        delete updated[String(itemId)];
-      } else {
-        updated[String(itemId)] = quantity;
-      }
+      if (quantity === 0) delete updated[itemId];
+      else updated[itemId] = quantity;
       return updated;
     });
   };
 
-  const getCartCount = () => {
-    return Object.values(cartItems).reduce((sum, count) => sum + count, 0);
-  };
+  const getCartCount = () =>
+    Object.values(cartItems).reduce((sum, count) => sum + count, 0);
 
-  const getCartAmount = () => {
-    return Object.entries(cartItems).reduce((total, [id, qty]) => {
-      const item = products.find(p => String(p.id) === String(id));
-      return item ? total + (item.offerPrice * qty) : total;
+  const getCartAmount = () =>
+    Object.entries(cartItems).reduce((total, [id, qty]) => {
+      const item = products.find((p) => String(p.id) === String(id));
+      return item ? total + item.offerPrice * qty : total;
     }, 0);
-  };
 
   useEffect(() => {
+    //fetchUserData(userId);
     fetchProducts();
-    fetchWishlist(testUserId);
+    fetchWishlist(userId);
   }, []);
 
   const value = {
     currency,
     router,
+    isSeller,
+    setIsSeller,
+    userData,
     products,
+    fetchProducts,
     cartItems,
     addToCart,
     updateCartQuantity,
@@ -162,12 +167,7 @@ export const AppContextProvider = ({ children }) => {
     removeFromWishlist,
     isInWishlist,
     getWishlistProducts,
-    wishlistItems
   };
 
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
