@@ -31,33 +31,6 @@ export default function Forum() {
   };
 
   // Add new post
-    const handleCreatePost = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session) {
-        alert("You must be logged in to create a post.");
-        return;
-    }
-
-    if (!title || !content) {
-        alert("Please fill in both title and content.");
-        return;
-    }
-
-    const { error } = await supabase.from("posts").insert({
-        title,
-        content,
-        user_id: session.user.id,
-    });
-
-    if (error) {
-        console.error("Error creating post:", error);
-    } else {
-        alert("Post created successfully!");
-        fetchPosts(); // refresh list
-    }
-    };
-
   const createPost = async (e) => {
     e.preventDefault();
     if (!user) {
