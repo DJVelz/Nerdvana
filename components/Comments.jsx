@@ -38,5 +38,17 @@ function Comments({ postId }) {
         fetchComments();
     }, []);
 
-    
+    return (
+        <div className="mt-4 border-t pt-3">
+            <h3 className="font-medium mb-2">Comments</h3>
+            {comments.map((c) => (
+                <div key={c.id} className="mb-2">
+                    <p>{c.content}</p>
+                    <small className="text-gray-500">
+                        {new Date(c.created_at).toLocaleString()}
+                    </small>
+                </div>
+            ))}
+        </div>
+    )
 }
