@@ -23,5 +23,14 @@ function Comments({ postId }) {
             alert("Please log in to comment!");
             return;
         }
-    }
+
+        const { error } = await supabase.from("comments").insert([
+            { post_id: postId, user_id: user.id, content: text },
+        ]);
+
+        if (!error) {
+            setText("");
+            fetchComments();
+        }
+    };
 }
