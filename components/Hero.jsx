@@ -10,7 +10,7 @@ const Hero = ({ title, highlight, subtitle}) => {
                 </h1>
 
                 {/* Subheadline */}
-                <p className="text-lg md:text-xl mb-8 text-gray-200">
+                <p className="text-lg md:text-xl mb-8 text-gray-200 whitespace-pre-line">
                     {subtitle}
                 </p>
             </div>
