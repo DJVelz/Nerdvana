@@ -70,3 +70,5 @@ function Comments({ postId }) {
         </div>
     );
 }
+
+export default Comments;

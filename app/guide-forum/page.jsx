@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import { supabase } from "@/lib/supabaseClient";
 import { useAppContext } from "@/context/AppContext";
-import Comments from "@/components/Comments"; // ⬅️ Make sure this matches your file path
+import Comments from "@/components/Comments.jsx";
 
 export default function Forum() {
   const { user } = useAppContext(); // get current logged-in user
