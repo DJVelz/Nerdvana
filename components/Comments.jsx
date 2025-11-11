@@ -1,6 +1,6 @@
 import { useAppContext } from "@/context/AppContext"
 import { supabase } from "@/lib/supabaseClient";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function Comments({ postId }) {
     const { user } = useAppContext();
@@ -33,4 +33,10 @@ function Comments({ postId }) {
             fetchComments();
         }
     };
+
+    useEffect(() => {
+        fetchComments();
+    }, []);
+
+    
 }
