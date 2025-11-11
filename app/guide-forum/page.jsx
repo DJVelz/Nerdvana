@@ -61,7 +61,7 @@ export default function Forum() {
       <Hero
         title="Explore the"
         highlight="Guide Forums"
-        subtitle="Welcome to the Nerdvana Guide Forums! Share your tips, guides, and discussions with the community."
+        subtitle={"Welcome to the Nerdvana Guide Forums! \nShare your tips, guides, and discussions with the community. \nYou must be logged in to create posts or comments!"}
       />
 
       <main className="px-6 md:px-16 lg:px-32 py-8">
