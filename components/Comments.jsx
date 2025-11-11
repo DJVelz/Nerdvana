@@ -49,6 +49,24 @@ function Comments({ postId }) {
                     </small>
                 </div>
             ))}
+
+            { user && (
+                <form onSubmit={addComment} className="mt-3 flex gap-2">
+                    <input
+                        type="text"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Add a comment."
+                        className="flex-1 p-2 border roounded"
+                    />
+                    <button
+                        type="submit"
+                        className="bg-gray-800 text-white px-3 py-1 rounded"
+                    >
+                        Post
+                    </button>
+                </form>
+            )}
         </div>
-    )
+    );
 }
