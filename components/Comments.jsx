@@ -16,4 +16,12 @@ function Comments({ postId }) {
 
         if (!error) setComments(data);
     };
+
+    const addComment = async (e) => {
+        e.preventDefault();
+        if(!user) {
+            alert("Please log in to comment!");
+            return;
+        }
+    }
 }
