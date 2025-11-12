@@ -18,8 +18,10 @@ const Wishlist = () => {
 
   // Redirect if no user is logged in
   useEffect(() => {
-    if (user === null) {
-      router.push("/user"); // or /login if you renamed it
+    if (!user) {
+      alert("Please log in to view your wishlist.");
+      router.push("/user"); 
+      return;
     }
   }, [user]);
 
