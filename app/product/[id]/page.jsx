@@ -10,6 +10,7 @@ import Loading from "@/components/Loading";
 import { useAppContext } from "@/context/AppContext";
 import React from "react";
 import Carousel from "@/components/Carousel";
+import toast from "react-hot-toast";
 
 const Product = () => {
 
@@ -25,6 +26,16 @@ const Product = () => {
     const fetchProductData = async () => {
         const product = products.find(product => String(product.id) === String(id));
         setProductData(product);
+    }
+
+    const handleWishlistToggle = () => {
+    if (isInWishlist(productData.id)) {
+        removeFromWishlist(productData.id);
+        toast.error("Removed from wishlist");
+    } else {
+        addToWishlist(productData.id);
+        toast.success("Added to wishlist");
+    }
     }
 
     useEffect(() => {
@@ -106,16 +117,7 @@ const Product = () => {
                             Add to Cart
                         </button>
                         <button
-                            onClick={() =>
-                            isInWishlist(productData.id)
-                                ? removeFromWishlist(productData.id)
-                                : addToWishlist(productData.id)
-                            }
-                            className={`w-full py-3.5 transition ${
-                            isInWishlist(productData.id)
-                                ? "bg-red-200 text-red-700 hover:bg-red-300"
-                                : "bg-pink-200 text-pink-700 hover:bg-pink-300"
-                            }`}
+                            onClick={handleWishlistToggle}
                         >
                             {isInWishlist(productData.id)
                             ? "Remove from Wishlist"
