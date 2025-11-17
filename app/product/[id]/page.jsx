@@ -118,6 +118,11 @@ const Product = () => {
                         </button>
                         <button
                             onClick={handleWishlistToggle}
+                            className={`w-full py-3.5 transition ${
+                            isInWishlist(productData.id)
+                                ? "bg-red-200 text-red-700 hover:bg-red-300"
+                                : "bg-pink-200 text-pink-700 hover:bg-pink-300"
+                            }`}
                         >
                             {isInWishlist(productData.id)
                             ? "Remove from Wishlist"
