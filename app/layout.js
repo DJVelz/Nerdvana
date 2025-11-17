@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
       <html lang="en">
         <body className={`${cinzel.className} antialiased text-gray-700`} >
-          <Toaster />
+          <Toaster position="top-right" />
           <AppContextProvider>
             {children}
           </AppContextProvider>
