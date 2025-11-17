@@ -105,6 +105,22 @@ const Product = () => {
                         <button onClick={() => addToCart(productData.id)} className="w-full py-3.5 bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition">
                             Add to Cart
                         </button>
+                        <button
+                            onClick={() =>
+                            isInWishlist(productData.id)
+                                ? removeFromWishlist(productData.id)
+                                : addToWishlist(productData.id)
+                            }
+                            className={`w-full py-3.5 transition ${
+                            isInWishlist(productData.id)
+                                ? "bg-red-200 text-red-700 hover:bg-red-300"
+                                : "bg-pink-200 text-pink-700 hover:bg-pink-300"
+                            }`}
+                        >
+                            {isInWishlist(productData.id)
+                            ? "Remove from Wishlist"
+                            : "Add to Wishlist"}
+                        </button>
                         <button onClick={() => { addToCart(productData.id); router.push('/cart') }} className="w-full py-3.5 bg-light_purple text-white hover:bg-purple transition">
                             Buy now
                         </button>
