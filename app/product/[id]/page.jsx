@@ -18,7 +18,7 @@ const Product = () => {
 
     const router = useRouter();
 
-    const { products, addToCart } = useAppContext()
+    const { products, addToCart, isInWishlist, removeFromWishlist, addToWishlist } = useAppContext()
 
     const [mainImage, setMainImage] = useState(null);
     const [productData, setProductData] = useState(null);
