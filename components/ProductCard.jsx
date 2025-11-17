@@ -3,6 +3,7 @@ import React from 'react';
 import { assets } from '@/public/assets/assets';
 import Image from 'next/image';
 import { useAppContext } from '@/context/AppContext';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({ product }) => {
   const { currency, router, addToWishlist, removeFromWishlist, isInWishlist } = useAppContext();
