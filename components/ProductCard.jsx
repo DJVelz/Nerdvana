@@ -9,9 +9,14 @@ const ProductCard = ({ product }) => {
 
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
-    isInWishlist(product.id)
-      ? removeFromWishlist(product.id)
-      : addToWishlist(product.id);
+  
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+      toast.error("Product removed from wishlist")
+    } else {
+      addToWishlist(product.id);
+      toast.success("Product added to wishlist")
+    }
   };
 
   return (
