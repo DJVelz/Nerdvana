@@ -13,10 +13,10 @@ const ProductCard = ({ product }) => {
   
     if (isInWishlist(product.id)) {
       removeFromWishlist(product.id);
-      toast("Product removed from wishlist")
+      toast.error("Product removed from wishlist")
     } else {
       addToWishlist(product.id);
-      toast("Product added to wishlist")
+      toast.success("Product added to wishlist")
     }
   };
 
