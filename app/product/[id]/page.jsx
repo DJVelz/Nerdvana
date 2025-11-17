@@ -125,7 +125,7 @@ const Product = () => {
                             }`}
                         >
                             {isInWishlist(productData.id)
-                            ? "Remove from Wishlist"
+                            ? "In Wishlist"
                             : "Add to Wishlist"}
                         </button>
                         <button onClick={() => { addToCart(productData.id); router.push('/cart') }} className="w-full py-3.5 bg-light_purple text-white hover:bg-purple transition">
