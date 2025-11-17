@@ -13,7 +13,8 @@ export default {
         foreground: "var(--foreground)",
         purple: "#471396",
         light_purple: "#9929EA",
-        gold: "#FFCC00"
+        gold: "#FFCC00",
+        gold_dark: "#cca300ff"
       },
       gridTemplateColumns:{
         'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
