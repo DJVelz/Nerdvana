@@ -1,62 +1,28 @@
 "use client";
-import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient"; 
+import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useAppContext } from "@/context/AppContext";
 
 export default function LoginPage() {
+  const { user, router } = useAppContext();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [user, setUser] = useState(null);
 
-  // Fetch current user on load
-  useEffect(() => {
-    const getUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-      if (data?.user) {
-        setUser(data.user);
-      }
-    };
-
-    getUser();
-
-    // Listen for auth state changes (login/logout)
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
-
-    // Cleanup listener on unmount
-    return () => {
-      listener.subscription.unsubscribe();
-    };
-  }, []);
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    setMessage("Sending magic link...");
-
-    const { error } = await supabase.auth.signInWithOtp({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
+      password,
     });
 
     if (error) {
-      setMessage(`Error: ${error.message}`);
+      setMessage(error.message);
     } else {
-      setMessage("Magic link sent! Check your email to log in.");
-    }
-  };
-
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      setMessage(`Error: ${error.message}`);
-    } else {
-      setUser(null);
-      setMessage("You have been logged out.");
+      router.push("/profile");
     }
   };
 
@@ -64,47 +30,69 @@ export default function LoginPage() {
     <>
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen px-4">
+
         {!user ? (
           <>
-            <h1 className="text-2xl font-bold mb-6">Sign In with Magic Link</h1>
+            <h1 className="text-2xl font-bold mb-6">Login</h1>
 
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleLogin}
               className="flex flex-col gap-4 w-72 bg-gray-100 p-6 rounded-lg shadow-md"
             >
               <input
                 type="email"
-                name="email"
-                placeholder="Enter your email"
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
                 className="border p-2 rounded"
-                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <input
+                type="password"
+                placeholder="Password"
+                className="border p-2 rounded"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <button
                 type="submit"
                 className="bg-light_purple text-white p-2 rounded hover:bg-purple transition"
               >
-                Send Magic Link
+                Login
               </button>
             </form>
+
+            <p className="mt-4 text-sm text-gray-600">
+              Don't have an account?
+              <span
+                className="ml-1 text-purple cursor-pointer"
+                onClick={() => router.push("/register")}
+              >
+                Register
+              </span>
+            </p>
           </>
         ) : (
           <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
             <h2 className="text-xl font-semibold mb-4">
-              Logged in as <span className="text-purple">{user.email}</span>
+              You are logged in as:{" "}
+              <span className="text-purple">
+                {user.user_metadata?.display_name || user.email}
+              </span>
             </h2>
+
             <button
-              onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+              onClick={() => router.push("/profile")}
+              className="bg-light_purple text-white px-4 py-2 rounded hover:bg-purple transition"
             >
-              Log Out
+              Go to Profile
             </button>
           </div>
         )}
 
         {message && (
-          <p className="mt-4 text-gray-700 text-center">{message}</p>
+          <p className="mt-4 text-red-500 text-center">{message}</p>
         )}
       </div>
       <Footer />
