@@ -66,7 +66,7 @@ export default function LoginPage() {
             <p className="mt-4 text-sm text-gray-600">
               Don't have an account?
               <span
-                className="ml-1 text-light_purple cursor-pointer hover:text-purple"
+                className="ml-1 text-light_purple font-bold cursor-pointer hover:text-purple"
                 onClick={() => router.push("/register")}
               >
                 Register
