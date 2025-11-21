@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { useAppContext } from "@/context/AppContext";
 
 export default function LoginPage() {
-  const { user, router } = useAppContext();
+  const { user, logout, router } = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
