@@ -24,12 +24,15 @@ const HomeProducts = () => {
         products={products.filter((p) => p.category?.includes("comics"))}
       />
 
-      <button
+      <div className="items-center">
+        <button
         onClick={() => router.push("/all-products")}
         className="px-12 py-2.5 border rounded text-gray-500/70 hover:bg-slate-50/90 transition mt-8"
       >
         Shop all products
       </button>
+      </div>
+      
     </div>
   );
 };
