@@ -122,6 +122,8 @@ export const AppContextProvider = ({ children }) => {
       ...prev,
       [id]: (prev[id] || 0) + 1,
     }));
+    const item = products.find((p) => p.id === id);
+    toast.success(`${item?.name || "Product"} added to cart!`);
   };
 
   const updateCartQuantity = (id, qty) => {
