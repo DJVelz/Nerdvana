@@ -19,7 +19,7 @@ export default function Forum() {
     setLoading(true);
     const { data, error } = await supabase
       .from("posts")
-      .select("id, title, content, created_at, user_id, users(display_name)")
+      .select("id, title, content, created_at, user_id, auth.users(display_name)")
       .order("created_at", { ascending: false });
 
     if (error) {
