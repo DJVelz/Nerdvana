@@ -19,7 +19,7 @@ export default function Forum() {
     setLoading(true);
     const { data, error } = await supabase
       .from("posts")
-      .select("id, title, content, created_at, user_id, user.user_metadata?.display_name")
+      .select("id, title, content, created_at, user_id, users!inner(id, raw_user_meta_data)")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -112,7 +112,7 @@ export default function Forum() {
                 <h2 className="text-xl font-semibold">{post.title}</h2>
                 <p className="text-gray-700 whitespace-pre-wrap">{post.content}</p>
                 <p className="text-sm text-gray-500">
-                  Posted by <strong>{post.users?.display_name || "Unknown"}</strong> –{" "}
+                  <strong>{post.users?.raw_user_meta_data?.display_name || "Unknown"}</strong>
                   {new Date(post.created_at).toLocaleString()}
                 </p>
 
