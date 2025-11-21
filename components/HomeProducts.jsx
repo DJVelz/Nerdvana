@@ -4,13 +4,12 @@ import { useAppContext } from "@/context/AppContext";
 import Carousel from "./Carousel";
 
 const HomeProducts = () => {
-
-  const { products, router } = useAppContext()
+  const { products, router } = useAppContext();
 
   return (
-    <div className="flex flex-col mb-6 items-start max-w-7xl mx-auto px-4 md:px-16 lg:px-32">
-      <div className="w-full max-w-7xl px-4 pt-6">
-        <Carousel
+    <div className="flex flex-col mb-6 items-start max-w-7xl mx-auto px-4 pt-6">
+      
+      <Carousel
         title="Products under $25"
         products={products.filter((p) => p.price < 25.0 || p.offerPrice < 25.0)}
       />
@@ -25,7 +24,6 @@ const HomeProducts = () => {
         products={products.filter((p) => p.category?.includes("comics"))}
       />
 
-      </div>
       <button
         onClick={() => router.push("/all-products")}
         className="px-12 py-2.5 border rounded text-gray-500/70 hover:bg-slate-50/90 transition mt-8"
