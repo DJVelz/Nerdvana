@@ -89,6 +89,7 @@ export const AppContextProvider = ({ children }) => {
         [productId]: data[0].id,
       }));
     }
+    fetchWishlist();
   };
 
   const removeFromWishlist = async (productId) => {
