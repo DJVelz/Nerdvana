@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import toast from "react-hot-toast";
 
 export const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
@@ -151,7 +152,8 @@ export const AppContextProvider = ({ children }) => {
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    router.push("/");
+    router.push("/user");
+    toast.success("You've been logged out.")
   };
 
   // ✅ VALUE -----------------------------------------------------------
