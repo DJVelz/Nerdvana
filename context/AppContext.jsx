@@ -93,6 +93,7 @@ export const AppContextProvider = ({ children }) => {
   };
 
   const removeFromWishlist = async (productId) => {
+    if (!user) return;
     const wishlistRowId = wishlistItems[productId];
     if (!wishlistRowId) return;
 
@@ -109,6 +110,7 @@ export const AppContextProvider = ({ children }) => {
         return updated;
       });
     }
+    fetchWishlist();
   };
 
   const isInWishlist = (id) => !!wishlistItems[id];
