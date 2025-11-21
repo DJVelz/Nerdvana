@@ -7,7 +7,7 @@ const HomeProducts = () => {
   const { products, router } = useAppContext();
 
   return (
-    <div className="flex flex-col mb-6 items-start max-w-7xl mx-auto px-4 pt-6">
+    <div className="flex flex-col mb-6 items-center max-w-7xl mx-auto px-4 pt-6">
       
       <Carousel
         title="Products under $25"
