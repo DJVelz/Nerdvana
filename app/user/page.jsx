@@ -74,7 +74,8 @@ export default function LoginPage() {
             </p>
           </>
         ) : (
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md w-80 text-center">
+          <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <div className="bg-gray-100 p-6 rounded-lg shadow-md w-80 text-center">
           <h1 className="text-2xl font-bold mb-4">Your Profile</h1>
 
           <p className="mb-2">
@@ -93,6 +94,7 @@ export default function LoginPage() {
             Log Out
           </button>
         </div>
+      </div>
         )}
 
         {message && (
