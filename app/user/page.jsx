@@ -23,8 +23,8 @@ export default function LoginPage() {
     if (error) {
       setMessage(error.message);
     } else {
-      router.push("/user");
-      toast.success("Hi " + user.user_metadata?.display_name + " you're logged in!");
+    toast.success(`Hi ${data.user.user_metadata?.display_name || "there"}! You're logged in!`);
+    router.push("/user");
     }
   };
 
