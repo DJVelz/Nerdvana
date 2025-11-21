@@ -10,7 +10,7 @@ function Comments({ postId }) {
     const fetchComments = async () => {
         const { data, error } = await supabase
             .from("comments")
-            .select("id, content, created_at, user_id")
+            .select("id, content, created_at, user_id, users(display_name")
             .eq("post_id", postId)
             .order("created_at", { ascending:true });
 
