@@ -39,7 +39,7 @@ function Comments({ postId }) {
     }, []);
 
     return (
-        <div className="mt-4 border-t pt-3">
+        <div className="mt-4 pt-3">
             <h3 className="font-medium mb-2">Comments</h3>
             {comments.map((c) => (
                 <div key={c.id} className="mb-2">
