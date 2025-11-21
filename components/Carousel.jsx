@@ -4,11 +4,11 @@ import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 
 export default function Carousel({ title, products }) {
-    const carouselRef = useRef(null);
+  const carouselRef = useRef(null);
 
-    return (
+  return (
     <div className="w-full my-10">
-      <p className="text-2xl font-medium text-left w-full">{title}</p>
+      <p className="text-2xl font-medium text-left">{title}</p>
 
       <div className="relative w-full mt-2">
         {/* Left Arrow */}
@@ -40,7 +40,6 @@ export default function Carousel({ title, products }) {
         </button>
       </div>
 
-      {/* Divider */}
       <div className="w-16 h-0.5 bg-purple rounded-full mt-6"></div>
     </div>
   );
