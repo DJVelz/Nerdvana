@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useAppContext } from "@/context/AppContext";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const { user, logout, router } = useAppContext();
@@ -23,6 +24,7 @@ export default function LoginPage() {
       setMessage(error.message);
     } else {
       router.push("/user");
+      toast.success("Hi " + user.user_metadata?.display_name + " you're logged in!");
     }
   };
 
