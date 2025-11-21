@@ -74,21 +74,25 @@ export default function LoginPage() {
             </p>
           </>
         ) : (
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-            <h2 className="text-xl font-semibold mb-4">
-              You are logged in as:{" "}
-              <span className="text-purple">
-                {user.user_metadata?.display_name || user.email}
-              </span>
-            </h2>
+          <div className="bg-gray-100 p-6 rounded-lg shadow-md w-80 text-center">
+          <h1 className="text-2xl font-bold mb-4">Your Profile</h1>
 
-            <button
-              onClick={() => router.push("/profile")}
-              className="bg-light_purple text-white px-4 py-2 rounded hover:bg-purple transition"
-            >
-              Go to Profile
-            </button>
-          </div>
+          <p className="mb-2">
+            <strong>Username:</strong>{" "}
+            {user.user_metadata?.display_name || "No username"}
+          </p>
+
+          <p className="mb-6">
+            <strong>Email:</strong> {user.email}
+          </p>
+
+          <button
+            onClick={logout}
+            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+          >
+            Log Out
+          </button>
+        </div>
         )}
 
         {message && (
