@@ -10,7 +10,7 @@ function Comments({ postId }) {
     const fetchComments = async () => {
         const { data, error } = await supabase
             .from("comments")
-            .select("id, content, created_at, user_id, auth.users(display_name)")
+            .select("id, content, created_at, user_id, users!inner(id, raw_user_meta_data)")
             .eq("post_id", postId)
             .order("created_at", { ascending:true });
 
@@ -45,7 +45,7 @@ function Comments({ postId }) {
                 <div key={c.id} className="mb-2">
                     <p>{c.content}</p>
                     <p className="text-sm text-gray-500">
-                        {c.users?.display_name || "Unknown"} – {new Date(c.created_at).toLocaleString()}
+                        {c.users?.raw_user_meta_data?.display_name || "Unknown"} – {new Date(c.created_at).toLocaleString()}
                     </p>
                 </div>
             ))}
