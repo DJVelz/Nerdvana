@@ -16,7 +16,7 @@ const AllProducts = () => {
                 title={"Looking for more?"}
                 subtitle={"Shop from our large selection of items! From collectibles, board games, and apparel items."}
             />
-            <div className="flex flex-col items-start px-6 md:px-16 lg:px-32">
+            <div className="flex flex-col min-h-screen items-start px-6 md:px-16 lg:px-32">
                 <div className="flex flex-col items-end pt-12">
                     <p className="text-2xl font-medium">All products</p>
                     <div className="w-16 h-0.5 bg-light_purple rounded-full"></div>
