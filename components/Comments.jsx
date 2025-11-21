@@ -44,9 +44,9 @@ function Comments({ postId }) {
             {comments.map((c) => (
                 <div key={c.id} className="mb-2">
                     <p>{c.content}</p>
-                    <small className="text-gray-500">
-                        {new Date(c.created_at).toLocaleString()}
-                    </small>
+                    <p className="text-sm text-gray-500">
+                        {c.users?.display_name || "Unknown"} – {new Date(c.created_at).toLocaleString()}
+                    </p>
                 </div>
             ))}
 
