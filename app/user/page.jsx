@@ -22,7 +22,7 @@ export default function LoginPage() {
     if (error) {
       setMessage(error.message);
     } else {
-      router.push("/profile");
+      router.push("/user");
     }
   };
 
