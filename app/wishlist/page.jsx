@@ -15,6 +15,14 @@ const Wishlist = () => {
   const router = useRouter();
 
   const { user } = useAppContext();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // don't render until client
+
 
   // Redirect if no user is logged in
   useEffect(() => {
