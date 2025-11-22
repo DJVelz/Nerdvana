@@ -1,6 +1,6 @@
 'use client';
-import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import toast from "react-hot-toast";
 
@@ -8,181 +8,147 @@ export const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }) => {
-  const currency = process.env.NEXT_PUBLIC_CURRENCY;
   const router = useRouter();
+  const currency = process.env.NEXT_PUBLIC_CURRENCY;
 
-  // State
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [wishlistItems, setWishlistItems] = useState({});
   const [cartItems, setCartItems] = useState({});
   const [isSeller, setIsSeller] = useState(true);
 
-  // ✅ AUTH HANDLING ---------------------------------------------------
+  // Restore session
   useEffect(() => {
-    const fetchSession = async () => {
+    const init = async () => {
       const { data } = await supabase.auth.getSession();
       setUser(data?.session?.user || null);
+      setLoading(false);
     };
 
-    fetchSession();
+    init();
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
     });
 
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
+    return () => listener?.subscription.unsubscribe();
   }, []);
 
-  // ✅ FETCH PRODUCTS --------------------------------------------------
+  // Fetch products
   const fetchProducts = async () => {
-    try {
-      const { data, error } = await supabase.from("products").select("*");
-      if (error) throw error;
-      setProducts(data);
-      console.log("Fetched products:", data);
-    } catch (err) {
-      console.error("Error fetching products:", err);
-    }
+    const { data, error } = await supabase.from("products").select("*");
+    if (!error) setProducts(data || []);
   };
 
-  // ✅ WISHLIST --------------------------------------------------------
+  // Wishlist helpers
   const fetchWishlist = async (userId) => {
     if (!userId) return;
     const { data, error } = await supabase
       .from("wishlist")
       .select("id, product_id")
       .eq("user_id", userId);
-
-    if (error) {
-      console.error("Error fetching wishlist:", error);
-      return;
+    if (!error && data) {
+      const map = {};
+      data.forEach((item) => map[item.product_id] = item.id);
+      setWishlistItems(map);
     }
-
-    const wishlistMap = {};
-    data.forEach((item) => {
-      wishlistMap[item.product_id] = item.id;
-    });
-
-    setWishlistItems(wishlistMap);
   };
 
   const addToWishlist = async (productId) => {
     if (!user) {
-      alert("Please log in to add items to your wishlist.");
+      toast.error("Please log in first.");
       router.push("/user");
       return;
     }
-
     const { data, error } = await supabase
       .from("wishlist")
-      .insert([{ user_id: user.id, product_id: productId }])
+      .insert([{ user_id: user.id, product_id }])
       .select();
 
-    if (error) {
-      console.error("Error adding to wishlist:", error);
-    } else {
-      setWishlistItems((prev) => ({
-        ...prev,
-        [productId]: data[0].id,
-      }));
+    if (!error && data?.length) {
+      setWishlistItems((prev) => ({ ...prev, [productId]: data[0].id }));
+      toast.success("Added to wishlist!");
     }
-    fetchWishlist();
   };
 
   const removeFromWishlist = async (productId) => {
-    if (!user) return;
-    const wishlistRowId = wishlistItems[productId];
-    if (!wishlistRowId) return;
-
-    const { error } = await supabase
-      .from("wishlist")
-      .delete()
-      .eq("id", wishlistRowId);
-
-    if (error) console.error("Error removing from wishlist:", error);
-    else {
+    const id = wishlistItems[productId];
+    if (!id) return;
+    const { error } = await supabase.from("wishlist").delete().eq("id", id);
+    if (!error) {
       setWishlistItems((prev) => {
-        const updated = { ...prev };
-        delete updated[productId];
-        return updated;
+        const copy = { ...prev };
+        delete copy[productId];
+        return copy;
       });
+      toast.success("Removed from wishlist");
     }
-    fetchWishlist();
   };
 
-  const isInWishlist = (id) => !!wishlistItems[id];
+  const isInWishlist = (productId) => !!wishlistItems[productId];
   const getWishlistProducts = () => products.filter((p) => wishlistItems[p.id]);
 
-  // ✅ CART ------------------------------------------------------------
+  // Cart helpers
   const addToCart = (id) => {
-    setCartItems((prev) => ({
-      ...prev,
-      [id]: (prev[id] || 0) + 1,
-    }));
-    const item = products.find((p) => p.id === id);
-    toast.success(`${item?.name || "Product"} added to cart!`);
+    setCartItems((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
   };
 
   const updateCartQuantity = (id, qty) => {
     setCartItems((prev) => {
-      const updated = { ...prev };
-      if (qty === 0) delete updated[id];
-      else updated[id] = qty;
-      return updated;
+      const copy = { ...prev };
+      if (qty <= 0) delete copy[id];
+      else copy[id] = qty;
+      return copy;
     });
   };
 
-  const getCartCount = () =>
-    Object.values(cartItems).reduce((sum, count) => sum + count, 0);
-
+  const getCartCount = () => Object.values(cartItems).reduce((a, b) => a + b, 0);
   const getCartAmount = () =>
     Object.entries(cartItems).reduce((total, [id, qty]) => {
       const item = products.find((p) => String(p.id) === String(id));
       return item ? total + item.offerPrice * qty : total;
     }, 0);
 
-  // ✅ INIT ------------------------------------------------------------
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  useEffect(() => {
-    if (user) fetchWishlist(user.id);
-  }, [user]);
-
-  // ✅ LOGOUT ----------------------------------------------------------
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    setWishlistItems([]);
+    setWishlistItems({});
+    setCartItems({});
     router.push("/user");
-    toast.success("You've been logged out.")
+    toast.success("Logged out");
   };
 
-  // ✅ VALUE -----------------------------------------------------------
-  const value = {
-    currency,
-    router,
-    user,
-    isSeller,
-    setIsSeller,
-    products,
-    fetchProducts,
-    wishlistItems,
-    addToWishlist,
-    removeFromWishlist,
-    isInWishlist,
-    getWishlistProducts,
-    cartItems,
-    addToCart,
-    updateCartQuantity,
-    getCartCount,
-    getCartAmount,
-    logout,
-  };
+  // Initial fetch
+  useEffect(() => { fetchProducts(); }, []);
+  useEffect(() => { if (user?.id) fetchWishlist(user.id); }, [user]);
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  if (loading) return null; // don't render until session is ready
+
+  return (
+    <AppContext.Provider
+      value={{
+        currency,
+        user,
+        isSeller,
+        setIsSeller,
+        products,
+        fetchProducts,
+        wishlistItems,
+        addToWishlist,
+        removeFromWishlist,
+        isInWishlist,
+        getWishlistProducts,
+        cartItems,
+        addToCart,
+        updateCartQuantity,
+        getCartCount,
+        getCartAmount,
+        logout,
+        router,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
