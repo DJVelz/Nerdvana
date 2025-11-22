@@ -14,15 +14,6 @@ export default function Forum() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null; // don't render until client
-
-
   // Fetch all posts
   const fetchPosts = async () => {
     setLoading(true);
