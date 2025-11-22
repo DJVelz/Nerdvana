@@ -14,7 +14,7 @@ export default function Forum() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  // Fetch posts
+  // Fetch all posts
   const fetchPosts = async () => {
     setLoading(true);
     const { data, error } = await supabase
@@ -22,29 +22,31 @@ export default function Forum() {
       .select("*")
       .order("created_at", { ascending: false });
 
-    if (!error) setPosts(data || []);
-    else console.error("Error fetching posts:", error);
+    if (error) console.error("Error fetching posts:", error);
+    else setPosts(data || []);
+
     setLoading(false);
   };
 
-  // Create new post
+  // Create a new post
   const createPost = async (e) => {
     e.preventDefault();
-    if (!user) {
-      alert("Please log in to create a post.");
-      return;
-    }
+    if (!user) return alert("Please log in to create a post.");
 
     const { error } = await supabase.from("posts").insert([
-      { user_id: user.id, title, content, username: user.user_metadata?.display_name }
+      {
+        user_id: user.id,
+        title,
+        content,
+        username: user.user_metadata?.display_name || "Unknown"
+      }
     ]);
 
-    if (!error) {
+    if (error) console.error("Error creating post:", error);
+    else {
       setTitle("");
       setContent("");
       fetchPosts();
-    } else {
-      console.error("Error creating post:", error);
     }
   };
 
@@ -63,10 +65,7 @@ export default function Forum() {
 
       <main className="px-6 md:px-16 lg:px-32 py-8">
         {user && (
-          <form
-            onSubmit={createPost}
-            className="bg-white shadow rounded-xl p-6 mb-10 space-y-4"
-          >
+          <form onSubmit={createPost} className="bg-white shadow rounded-xl p-6 mb-10 space-y-4">
             <h2 className="text-2xl font-semibold">Create a New Post</h2>
             <input
               type="text"
