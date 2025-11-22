@@ -5,32 +5,29 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import { supabase } from "@/lib/supabaseClient";
 import { useAppContext } from "@/context/AppContext";
-import Comments from "@/components/Comments.jsx";
+import Comments from "@/components/Comments";
 
 export default function Forum() {
-  const { user } = useAppContext(); // get current logged-in user
+  const { user } = useAppContext();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  // Fetch posts from Supabase
+  // Fetch posts
   const fetchPosts = async () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("posts")
-      .select("id, title, content, created_at, user_id, users!inner(id, raw_user_meta_data)")
+      .select("*")
       .order("created_at", { ascending: false });
 
-    if (error) {
-      console.error("Error fetching posts:", error);
-    } else {
-      setPosts(data || []);
-    }
+    if (!error) setPosts(data || []);
+    else console.error("Error fetching posts:", error);
     setLoading(false);
   };
 
-  // Add new post
+  // Create new post
   const createPost = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -39,15 +36,15 @@ export default function Forum() {
     }
 
     const { error } = await supabase.from("posts").insert([
-      { user_id: user.id, title, content },
+      { user_id: user.id, title, content, username: user.user_metadata?.display_name }
     ]);
 
-    if (error) {
-      console.error("Error creating post:", error);
-    } else {
+    if (!error) {
       setTitle("");
       setContent("");
-      fetchPosts(); // refresh list
+      fetchPosts();
+    } else {
+      console.error("Error creating post:", error);
     }
   };
 
@@ -61,11 +58,10 @@ export default function Forum() {
       <Hero
         title="Explore the"
         highlight="Guide Forums"
-        subtitle={"Welcome to the Nerdvana Guide Forums! \nShare your tips, guides, and discussions with the community. \nYou must be logged in to create posts or comments!"}
+        subtitle={`Welcome to the Nerdvana Guide Forums!\nShare your tips, guides, and discussions with the community.\nYou must be logged in to create posts or comments!`}
       />
 
       <main className="px-6 md:px-16 lg:px-32 py-8">
-        {/* Create new post form */}
         {user && (
           <form
             onSubmit={createPost}
@@ -97,7 +93,6 @@ export default function Forum() {
           </form>
         )}
 
-        {/* Display posts */}
         <section className="space-y-10">
           {loading ? (
             <p>Loading posts...</p>
@@ -105,18 +100,13 @@ export default function Forum() {
             <p className="text-gray-500">No posts yet. Be the first to share!</p>
           ) : (
             posts.map((post) => (
-              <div
-                key={post.id}
-                className="bg-white shadow rounded-xl p-4 space-y-3"
-              >
+              <div key={post.id} className="bg-white shadow rounded-xl p-4 space-y-3">
                 <h2 className="text-xl font-semibold">{post.title}</h2>
                 <p className="text-gray-700 whitespace-pre-wrap">{post.content}</p>
                 <p className="text-sm text-gray-500">
-                  <strong>{post.users?.raw_user_meta_data?.display_name || "Unknown"}</strong>
-                  {new Date(post.created_at).toLocaleString()}
+                  <strong>{post.username || "Unknown"}</strong> – {new Date(post.created_at).toLocaleString()}
                 </p>
 
-                {/* Comments section */}
                 <div className="border-t pt-3">
                   <Comments postId={post.id} />
                 </div>
@@ -125,7 +115,6 @@ export default function Forum() {
           )}
         </section>
       </main>
-
       <Footer />
     </>
   );
