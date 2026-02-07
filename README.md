@@ -64,17 +64,6 @@ This project was developed as a final course project with a focus on modern web 
 
 ---
 
-## Project Structure (High-Level)
-
-/app
-/components
-/context
-/wishlist
-/forum
-/lib
-supabaseClient.js
-
-
 - **AppContext** manages global state (auth, products, wishlist, cart)
 - Pages are structured using the Next.js App Router
 - Supabase client is centralized for consistency
